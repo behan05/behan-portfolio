@@ -1,0 +1,40 @@
+.logo-container {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2rem;
+  color: #00f0ff;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.typed {
+  animation: typing 2s steps(12), blinkCursor 1s step-end infinite;
+  overflow: hidden;
+  border-right: 0.15em solid #00f0ff;
+  padding-right: 4px;
+}
+
+.cursor {
+  color: #5eead4;
+  animation: blink 1s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 12ch;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
