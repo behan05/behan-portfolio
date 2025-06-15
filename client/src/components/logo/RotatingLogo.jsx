@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Stack } from "../../mui/muiComponents";
-import logo from "../../assets/images/star.png";
 import { Link } from "react-router-dom";
 
 
@@ -28,7 +27,7 @@ function RotatingLogo() {
 
     return (
         <Stack flexGrow={1} component={Link} to={'/'}>
-            <Stack ref={logoRef} component={'img'} src={logo} width={50} height={50} alt="logo-image" />
+            <Stack ref={logoRef} component={'img'} src={'/star.png'} width={50} height={50} alt="logo-image" />
         </Stack>
     )
 }
