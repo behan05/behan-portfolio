@@ -1,6 +1,7 @@
 
 export const typography = {
-    fontFamily: `'Poppins', 'Roboto', 'Helvetica', 'Arial', sans-serif`,
+    //  fontFamily: '"Montserrat", "Open Sans"',
+     fontFamily: `"Megrim", system-ui`,
 
     h1: {
         fontWeight: 700,

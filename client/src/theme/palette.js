@@ -1,43 +1,54 @@
-
 export const palette = {
-    mode: 'dark' || 'light',
+    mode: 'dark',
 
     primary: {
-        main: '#006D77', // Deep Peacock Teal
-        light: '#33a1a8',
-        dark: '#004f53',
-        contrastText: '#ffffff',
+        main: '#00B4D8', // Bright aqua blue
+        light: '#48CAE4', // Lighter aqua
+        dark: '#0077B6', // Deep sea blue
+        contrastText: '#fffce1',
     },
+
     secondary: {
-        main: '#EF476F', // Saffron Coral
-        light: '#ff6f8e',
-        dark: '#b80043',
-        contrastText: '#ffffff',
+        main: '#EF476F', // Vibrant pink coral
+        light: '#FF7A94', // Light coral
+        dark: '#C9003C', // Deep magenta
+        contrastText: '#fffce1',
     },
+
     text: {
-        primary: '#F5F5F5', // Off-white for readability
-        secondary: '#B0B0B0', // Muted gray
-        disabled: '#7a7a7a',
+        primary: '#fffce1', // Off-white
+        secondary: '#C4C4C4', // Muted light gray
+        disabled: '#7A7A7A', // Darker gray
     },
+
     error: {
-        main: '#F43F5E', // Strong crimson pink (bold but unique)
-        contrastText: '#ffffff',
+        main: '#F43F5E', // Rose red
+        dark: '#B91C1C',
+        contrastText: '#fffce1',
     },
-    wraning: {
-        main: '#FFD166', // Gold glow
+
+    warning: {
+        main: '#FFD166', // Soft yellow
+        dark: '#C29E00',
         contrastText: '#000000',
     },
+
     info: {
-        main: '#3ABFF8', // Sky blue info
-        contrastText: '#ffffff',
+        main: '#3ABFF8', // Light sky blue
+        dark: '#0284C7',
+        contrastText: '#fffce1',
     },
+
     success: {
-        main: '#10B981', // Soft lime teal (success with calm tone)
-        contrastText: '#ffffff',
+        main: '#10B981', // Jade green
+        dark: '#047857',
+        contrastText: '#fffce1',
     },
+
     background: {
-        default: '#0B0F10', // deep dark with bluish tone
-        paper: '#12181B', // slightly raised contrast
+        default: '#0B0F10', // Dark background
+        paper: '#14191C', // Card/section background
     },
-    divider: 'rgba(255,255,255,0.08)',
-}
+
+    divider: 'rgba(255, 252, 225, 0.1)', // Light divider for dark bg
+};

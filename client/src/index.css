@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand+Pre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
+}
+body {
+  cursor: none;
 }

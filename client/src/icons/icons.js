@@ -1,9 +1,16 @@
-export {
-    ToggleOnIcon,
-    ToggleOffIcon,
-    MenuIcon,
-    MenuOpenIcon,
-    LinkedInIcon,
-    XIcon,
-    OutgoingMailIcon
-} from "@mui/icons-material";
+// icons.js
+
+export { default as ToggleOnIcon } from '@mui/icons-material/ToggleOn';
+export { default as ToggleOffIcon } from '@mui/icons-material/ToggleOff';
+export { default as MenuIcon } from '@mui/icons-material/Menu';
+export { default as MenuOpenIcon } from '@mui/icons-material/MenuOpen';
+export { default as LinkedInIcon } from '@mui/icons-material/LinkedIn';
+export { default as XIcon } from '@mui/icons-material/X';
+export { default as OutgoingMailIcon } from '@mui/icons-material/MarkEmailRead'; // likely meant this
+
+export { default as HomeIcon } from '@mui/icons-material/Home';
+export { default as InfoIcon } from '@mui/icons-material/Info';
+export { default as WorkspacesIcon } from '@mui/icons-material/Workspaces';
+export { default as ForumIcon } from '@mui/icons-material/Forum';
+export { default as ContactsIcon } from '@mui/icons-material/Contacts';
+export { default as AttachFileIcon } from '@mui/icons-material/AttachFile';
