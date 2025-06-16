@@ -24,7 +24,6 @@ import { NavLink } from "react-router-dom";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import RotatingLogo from "../logo/RotatingLogo";
 
 // Plug useGSAP
 gsap.registerPlugin(useGSAP);
@@ -35,11 +34,11 @@ function Header() {
 
   const pages = [
     { text: "Home", href: "/", icon: <HomeIcon /> },
-    { text: "About", href: "/about", icon: <InfoIcon /> },
-    { text: "Projects", href: "/projects", icon: <WorkspacesIcon /> },
-    { text: "Contact", href: "/contact", icon: <ContactsIcon /> },
-    { text: "Blogs", href: "/blogs", icon: <ForumIcon /> },
-    { text: "Download Resume", href: "/download-resume", icon: <AttachFileIcon /> },
+    { text: "Intro", href: "/about", icon: <InfoIcon /> },
+    { text: "Builds", href: "/projects", icon: <WorkspacesIcon /> },
+    { text: "Say Hi", href: "/contact", icon: <ContactsIcon /> },
+    { text: "Posts", href: "/blogs", icon: <ForumIcon /> },
+    { text: "Resume", href: "/download-resume", icon: <AttachFileIcon /> },
   ];
 
   const navRef = useRef(null);
@@ -49,8 +48,10 @@ function Header() {
       position="fixed"
       elevation={0}
       sx={{
-        boxShadow: "none",
-        background: "inherit",
+        backgroundColor: 'transparent',
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        transition: 'background-color 0.3s ease',
         py: 1,
       }}
     >
@@ -61,9 +62,25 @@ function Header() {
         }}
       >
         {/* Logo Component */}
-        <Stack flexGrow={1}>
-          <RotatingLogo />
+        <Stack
+          flexGrow={1}
+          component={NavLink}
+          to="/"
+          justifyContent={'center'}
+          alignContent={'center'}
+        >
+          <Box
+            component="img"
+            src="/logo.png"
+            alt="Behan Portfolio Logo"
+            sx={{
+              width: { xs: 80, sm: 100 },
+              userSelect: 'none',
+              display: 'block',
+            }}
+          />
         </Stack>
+
 
         {/* Pages List */}
         {!isSm ? (
@@ -91,7 +108,7 @@ function Header() {
                   justifyContent: "center",
                   alignItems: "center",
                   gap: 1,
-                  transition: "all 0.5s ease",
+                  transition: "all 0.3s ease",
 
                   "&:hover": {
                     borderTopLeftRadius: "16px",
@@ -100,13 +117,10 @@ function Header() {
                     borderBottomLeftRadius: "0",
                     boxShadow: `0 0 22rem ${theme.palette.text.primary}`,
                     background: "inherit",
-                    border: `4px dotted ${theme.palette.divider}`
                   },
 
                   "&:hover .MuiListItemText-primary": {
                     fontFamily: '"Edu VIC WA NT Hand Pre", cursive',
-                    fontWeight: 600,
-                    transition: 'all 0.2s ease',
                   },
                 }}
               >
@@ -149,6 +163,7 @@ function Header() {
                     primaryTypographyProps={{
                       sx: {
                         color: `${theme.palette.text.primary} !important`,
+                        fontFamily: `"Megrim", system-ui`,
                       },
                     }}
                   />

@@ -16,8 +16,8 @@ export const palette = {
     },
 
     text: {
-        primary: '#fffce1', // Off-white
-        secondary: '#C4C4C4', // Muted light gray
+        primary: '#FFFFFF', // Off-white
+        secondary: '#252C62', // Muted light gray
         disabled: '#7A7A7A', // Darker gray
     },
 
@@ -46,8 +46,8 @@ export const palette = {
     },
 
     background: {
-        default: '#0B0F10', // Dark background
-        paper: '#14191C', // Card/section background
+        default: '#09021A', // Dark background
+        paper: '#26275D', // Card/section background
     },
 
     divider: 'rgba(255, 252, 225, 0.1)', // Light divider for dark bg

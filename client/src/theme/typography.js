@@ -1,7 +1,6 @@
 
 export const typography = {
-    //  fontFamily: '"Montserrat", "Open Sans"',
-     fontFamily: `"Megrim", system-ui`,
+     fontFamily: '"Montserrat", "Open Sans"',
 
     h1: {
         fontWeight: 700,

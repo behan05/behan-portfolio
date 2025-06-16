@@ -14,5 +14,6 @@ export {
     List, 
     ListItem, 
     ListItemText,
+    alpha,
     
 } from "@mui/material";

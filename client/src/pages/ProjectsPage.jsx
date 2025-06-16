@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Box } from "../mui/muiComponents";
 
 function ProjectsPage() {
   return (
-    <div>ProjectsPage</div>
+    <Box>
+      ProjectsPage
+    </Box>
   )
 }
 
