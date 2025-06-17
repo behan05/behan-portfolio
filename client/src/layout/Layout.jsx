@@ -29,6 +29,7 @@ function Layout() {
                     px: isSM ? 1 : 6,
                     pt: 10, // to prevent overlap with fixed header
                     flex: 1,
+                    mt: 5
                 }}
             >
                 {/* Main Content */}

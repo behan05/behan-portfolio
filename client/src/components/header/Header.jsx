@@ -10,6 +10,7 @@ import {
   IconButton,
   Tooltip,
   Box,
+  Typography,
 } from "../../mui/muiComponents";
 import {
   MenuIcon,
@@ -19,11 +20,13 @@ import {
   ForumIcon,
   ContactsIcon,
   AttachFileIcon,
+  FiberManualRecordIcon
 } from "../../icons/icons";
 import { NavLink } from "react-router-dom";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Logo from "../logo/Logo";
 
 // Plug useGSAP
 gsap.registerPlugin(useGSAP);
@@ -61,125 +64,129 @@ function Header() {
           flexWrap: "wrap",
         }}
       >
-        {/* Logo Component */}
+
         <Stack
+          component="section"
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap={'wrap'}
           flexGrow={1}
-          component={NavLink}
-          to="/"
-          justifyContent={'center'}
-          alignContent={'center'}
         >
-          <Box
-            component="img"
-            src="/logo.png"
-            alt="Behan Portfolio Logo"
-            sx={{
-              width: { xs: 80, sm: 100 },
-              userSelect: 'none',
-              display: 'block',
-            }}
-          />
-        </Stack>
-
-
-        {/* Pages List */}
-        {!isSm ? (
-          pages.map((page, index) => (
-            <List
-              ref={navRef}
-              key={index}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+          {/* Left: Logo + Status */}
+          <Stack direction="row" alignItems="center" gap={2}>
+            <Logo />
+            <Stack
+              direction="row"
+              gap={1}
+              alignItems="center"
+              component={NavLink}
+              to={'DOTO'}
+              sx={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <ListItem
-                component={NavLink}
-                to={page.href}
+              <FiberManualRecordIcon
+                aria-label="online indicator"
                 sx={{
-                  px: 1,
-                  py: 1,
-                  mx: 0.5,
-                  boxShadow: `0 0 1px ${theme.palette.text.primary}`,
-                  borderTopRightRadius: "16px",
-                  borderBottomLeftRadius: "16px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 1,
-                  transition: "all 0.3s ease",
-
-                  "&:hover": {
-                    borderTopLeftRadius: "16px",
-                    borderBottomRightRadius: "16px",
-                    borderTopRightRadius: "0",
-                    borderBottomLeftRadius: "0",
-                    boxShadow: `0 0 22rem ${theme.palette.text.primary}`,
-                    background: "inherit",
-                  },
-
-                  "&:hover .MuiListItemText-primary": {
-                    fontFamily: '"Edu VIC WA NT Hand Pre", cursive',
+                  fontSize: '12px',
+                  color: theme.palette.success.main,
+                  bgcolor: theme.palette.background.default,
+                  borderRadius: '50%',
+                  animation: 'pulseGlow 1.5s infinite',
+                  '@keyframes pulseGlow': {
+                    '0%': {
+                      filter: `drop-shadow(0 0 0px ${theme.palette.success.main})`,
+                    },
+                    '50%': {
+                      filter: `drop-shadow(0 0 4px ${theme.palette.success.main})`,
+                    },
+                    '100%': {
+                      filter: `drop-shadow(0 0 0px ${theme.palette.success.main})`,
+                    },
                   },
                 }}
-              >
-                <Tooltip
-                  title={
-                    <Box sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      fontSize: 20,
-                      color: theme.palette.text.primary,
+              />
+              <Typography variant="body2" role="status" color="text.primary">
+                Currently Available
+              </Typography>
+            </Stack>
+          </Stack>
 
-                    }}>
-                      {page.icon}
-                    </Box>
-                  }
-                  placement="top"
-                  arrow={true}
-                  enterDelay={100}
-                  leaveDelay={100}
+          {/* Right: Pages List */}
+
+          {isSm ? (
+            <IconButton edge={'start'}>
+              <MenuIcon color='text.primary' />
+            </IconButton>
+          ) : (
+            <List sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+              {pages.map((navItem, index) => (
+                <Tooltip
+                  key={index}
+                  title={navItem.icon}
+                  arrow
+                  placement="bottom"
                   componentsProps={{
                     tooltip: {
                       sx: {
-                        backgroundColor: theme.palette.background.default,
-                        border: `1px solid ${theme.palette.divider}`,
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        backdropFilter: 'blur(6px)',
                         color: theme.palette.text.primary,
+                        fontSize: 13,
                         px: 1.5,
-                        py: 0.5,
-                        borderRadius: 1.5,
+                        py: 1,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 2,
+                        boxShadow: `0 0 8px rgba(0,0,0,0.1)`,
                       },
                     },
                     arrow: {
                       sx: {
-                        color: theme.palette.background.default,
+                        color: 'rgba(255, 255, 255, 0.05)',
                       },
                     },
                   }}
                 >
-                  <ListItemText
-                    primary={page.text}
-                    primaryTypographyProps={{
-                      sx: {
-                        color: `${theme.palette.text.primary} !important`,
-                        fontFamily: `"Megrim", system-ui`,
+                  <Box
+                    component={NavLink}
+                    to={navItem.href}
+                    sx={{
+                      px: 2.5,
+                      py: 1,
+                      borderRadius: 1,
+                      color: theme.palette.text.primary,
+                      textDecoration: 'none',
+                      fontWeight: 500,
+                      transition: 'all 0.3s ease',
+                      '&.active': {
+                        color: theme.palette.text.secondary,
+                        // backgroundColor: theme.palette.success.main,
+                        fontWeight: 600,
+                        boxShadow: `0 0 4px 0.1px ${theme.palette.success.main}`,
+                      },
+                      '&:hover': {
+                        backgroundColor: theme.palette.action.hover,
+                        transform: 'translateY(-1px)',
+                      },
+                      '&.active:hover': {
                       },
                     }}
-                  />
+                  >
+                    <Typography variant="body2" textAlign="center" whiteSpace="nowrap">
+                      {navItem.text}
+                    </Typography>
+                  </Box>
                 </Tooltip>
-              </ListItem>
+              ))}
             </List>
-          ))
-        ) : (
-          <IconButton>
-            <MenuIcon sx={{
-              color: theme.palette.text.primary,
-            }} />
-          </IconButton>
-        )}
+          )}
+
+        </Stack>
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 }
 

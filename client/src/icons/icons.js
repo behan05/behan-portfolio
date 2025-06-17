@@ -14,3 +14,8 @@ export { default as WorkspacesIcon } from '@mui/icons-material/Workspaces';
 export { default as ForumIcon } from '@mui/icons-material/Forum';
 export { default as ContactsIcon } from '@mui/icons-material/Contacts';
 export { default as AttachFileIcon } from '@mui/icons-material/AttachFile';
+
+
+export { default as FiberManualRecordIcon } from '@mui/icons-material/FiberManualRecord';
+
+

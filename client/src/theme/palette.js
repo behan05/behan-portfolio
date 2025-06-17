@@ -46,7 +46,7 @@ export const palette = {
     },
 
     background: {
-        default: '#09021A', // Dark background
+        default: '#282862', // Dark background
         paper: '#26275D', // Card/section background
     },
 
