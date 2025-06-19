@@ -3,6 +3,7 @@ import RactangleFlower from "../components/ractangleFlower/RactangleFlower";
 import { Box, Stack } from "../mui/muiComponents";
 import Slider from "../components/slider/Slider";
 import Capabilities from "../components/capabilities/Capabilities";
+import Carousel3D from "../components/carousel3D/Carousel3D";
 
 function LandingPage() {
 
@@ -28,6 +29,8 @@ function LandingPage() {
         <RactangleFlower />
       </Stack>
 
+      {/* ===  Carousel3D  === */}
+      <Carousel3D />
     </Box>
 
   )
