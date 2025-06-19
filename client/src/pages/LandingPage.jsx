@@ -31,6 +31,11 @@ function LandingPage() {
 
       {/* ===  Carousel3D  === */}
       <Carousel3D />
+
+      {/* === Decorative Rotating Rectangle Graphic === */}
+      <Stack mt={10} justifyContent="center">
+        <RactangleFlower />
+      </Stack>
     </Box>
 
   )

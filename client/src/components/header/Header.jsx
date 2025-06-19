@@ -38,7 +38,6 @@ function Header() {
     { text: "Intro", href: "/about", icon: <InfoIcon /> },
     { text: "Builds", href: "/projects", icon: <WorkspacesIcon /> },
     { text: "Say Hi", href: "/contact", icon: <ContactsIcon /> },
-    { text: "Posts", href: "/blogs", icon: <ForumIcon /> },
     { text: "Resume", href: "/download-resume", icon: <AttachFileIcon /> },
   ];
 
@@ -185,6 +184,7 @@ function Header() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 position: 'relative',
+                gap:1
               }}>
               {pages.map((navItem, index) => (
                 <Tooltip
