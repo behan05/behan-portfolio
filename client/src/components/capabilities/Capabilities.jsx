@@ -35,6 +35,17 @@ function Capabilities() {
             label: "Cloud Deployment & Optimization",
             description: `I deploy production-ready applications on platforms like AWS, Render, and Vercel. I optimize resource usage with environment-based configuration, CDN caching, code splitting, and lazy loading, ensuring fast performance and cost-efficiency across environments.`,
         },
+        {
+            number: "05",
+            label: "UI/UX Design Integration",
+            description: `I convert modern UI/UX designs into fully responsive, accessible frontends using React and Material UI (MUI). I emphasize pixel-perfect layouts, smooth animations with GSAP or Framer Motion, and interactive user flows to create intuitive and engaging user experiences.`,
+        },
+        {
+            number: "06",
+            label: "Version Control & Team Collaboration",
+            description: `I use Git and GitHub for effective version control, code reviews, and branching strategies. I follow best practices for commits, pull requests, and collaborative workflows, ensuring smooth team coordination and continuous integration in multi-developer environments.`,
+        }
+
     ];
 
     useGSAP(() => {
@@ -123,7 +134,7 @@ function Capabilities() {
                             variant="subtitle1"
                             gutterBottom
                             color="text.primary"
-                            my={8}
+                            my={4}
                             fontSize={"1.2rem"}
                             fontWeight={600}
                         >
