@@ -15,7 +15,8 @@ export { default as ForumIcon } from '@mui/icons-material/Forum';
 export { default as ContactsIcon } from '@mui/icons-material/Contacts';
 export { default as AttachFileIcon } from '@mui/icons-material/AttachFile';
 
-
 export { default as FiberManualRecordIcon } from '@mui/icons-material/FiberManualRecord';
+export { default as WorkOutlineIcon } from '@mui/icons-material/WorkOutline';
+export { default as VisibilityIcon } from '@mui/icons-material/Visibility';
 
 

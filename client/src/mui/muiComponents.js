@@ -15,5 +15,6 @@ export {
     ListItem, 
     ListItemText,
     alpha,
-    
+    GlobalStyles,
+    Grid,
 } from "@mui/material";

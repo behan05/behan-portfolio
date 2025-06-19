@@ -1,8 +1,6 @@
 import {
   AppBar,
   List,
-  ListItem,
-  ListItemText,
   Stack,
   Toolbar,
   useMediaQuery,
@@ -23,7 +21,7 @@ import {
   FiberManualRecordIcon
 } from "../../icons/icons";
 import { NavLink } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Logo from "../logo/Logo";
@@ -46,9 +44,71 @@ function Header() {
 
   const navRef = useRef(null);
 
+  useLayoutEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+
+    requestAnimationFrame(() => {
+      const links = el.querySelectorAll('.nav-link');
+
+      if (links.length === 0) {
+        console.warn("No nav links found.");
+        return;
+      }
+
+      // Ensure all links are visible first (before animating)
+      links.forEach(link => {
+        link.style.opacity = '0';
+        link.style.transform = 'translateY(-20px)';
+      });
+
+      // Now animate from current state to visible
+      gsap.to(links, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.20,
+        duration: 0.6,
+        ease: "power2.out",
+        clearProps: "all", // removes inline styles after animation
+      });
+    });
+  }, []);
+
+  // only Hi except Say Animation
+  useEffect(() => {
+    const elements = navRef.current?.querySelectorAll('.nav-link');
+
+    if (!elements || elements.length === 0) return;
+
+    elements.forEach((element) => {
+      if (element.textContent.trim().toLowerCase() === 'say hi') {
+        const el = element;
+
+        const intervalId = setInterval(() => {
+          gsap.fromTo(
+            el,
+            { rotate: 0, scale: 1 },
+            {
+              rotate: 10,
+              scale: 1.2,
+              yoyo: true,
+              repeat: 1,
+              duration: 0.3,
+              ease: "power1.inOut",
+            }
+          );
+        }, 3000);
+
+        // Cleanup
+        return () => clearInterval(intervalId);
+      }
+    });
+  }, []);
+
+
   return (
     <AppBar
-      position="fixed"
+      position='relative'
       elevation={0}
       sx={{
         backgroundColor: 'transparent',
@@ -118,11 +178,14 @@ function Header() {
               <MenuIcon color='text.primary' />
             </IconButton>
           ) : (
-            <List sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            <List
+              ref={navRef}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'relative',
+              }}>
               {pages.map((navItem, index) => (
                 <Tooltip
                   key={index}
@@ -153,6 +216,7 @@ function Header() {
                   <Box
                     component={NavLink}
                     to={navItem.href}
+                    className="nav-link"
                     sx={{
                       px: 2.5,
                       py: 1,
@@ -162,16 +226,14 @@ function Header() {
                       fontWeight: 500,
                       transition: 'all 0.3s ease',
                       '&.active': {
-                        color: theme.palette.text.secondary,
-                        // backgroundColor: theme.palette.success.main,
+                        color: theme.palette.success.main,
                         fontWeight: 600,
-                        boxShadow: `0 0 4px 0.1px ${theme.palette.success.main}`,
+                        borderTopLeftRadius: 0,
+                        boxShadow: `inset 0 0 4px ${theme.palette.text.secondary}`,
                       },
                       '&:hover': {
                         backgroundColor: theme.palette.action.hover,
                         transform: 'translateY(-1px)',
-                      },
-                      '&.active:hover': {
                       },
                     }}
                   >

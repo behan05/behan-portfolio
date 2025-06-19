@@ -1,25 +1,21 @@
 import { useRef, useEffect } from 'react';
-import ractangle from '../../assets/images/ractangle.png'
-import { Stack, useMediaQuery, useTheme } from "../../mui/muiComponents"
-
+import ractangle from '../../assets/images/ractangle.png';
+import { Stack, useMediaQuery, useTheme } from "../../mui/muiComponents";
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-gsap.registerEase(useGSAP)
+gsap.registerPlugin(useGSAP);
 
 function RactangleFlower() {
-
     const theme = useTheme();
     const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMd = useMediaQuery(theme.breakpoints.down('md'));
 
     const ractangleRef = useRef(null);
-    // ractangleRef
-    useEffect(() => {
-        let angle = 0
 
+    useEffect(() => {
+        let angle = 0;
         const ractangleTimer = setInterval(() => {
-            angle += 365
+            angle += 365;
 
             gsap.to(ractangleRef.current, {
                 rotateZ: angle,
@@ -27,34 +23,31 @@ function RactangleFlower() {
                 ease: 'linear',
                 transformOrigin: 'center center',
             });
-
-            return () => clearInterval(ractangleTimer);
         }, 2000);
+
+        return () => clearInterval(ractangleTimer);
     }, []);
 
     return (
         <Stack
-            display={(isSm || isMd) ? 'flex' : 'inline-block'}
             justifyContent="center"
-            width={'100%'}
             alignItems="center"
-            textAlign={(isSm || isMd) ? 'center' : 'left'}
+            textAlign="center"
             my={4}
-            ml={(!isSm || !isMd) && 4}
+            width="100%"
         >
             <Stack
                 ref={ractangleRef}
                 component="img"
                 src={ractangle}
-                alt="rectangle Image"
+                alt="rectangle"
                 width={isSm ? 50 : 80}
                 sx={{
                     userSelect: 'none',
-                    mr: 0,
                 }}
             />
         </Stack>
-    )
+    );
 }
 
 export default RactangleFlower;
