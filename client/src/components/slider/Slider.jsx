@@ -61,7 +61,7 @@ function Slider() {
     };
 
     return (
-        <Box sx={{ overflow: 'hidden', py: 4, my: 1, position: 'relative' }}>
+        <Box sx={{ overflow: 'hidden', py: 4, my: 2, position: 'relative' }}>
             {/* Row 1 */}
             <Box sx={{ overflow: 'hidden', position: 'relative', width: '100%', height: '2.5rem' }}>
                 <Box ref={row1Ref} sx={{
