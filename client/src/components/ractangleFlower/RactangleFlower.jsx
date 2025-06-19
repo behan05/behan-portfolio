@@ -33,7 +33,6 @@ function RactangleFlower() {
             justifyContent="center"
             alignItems="center"
             textAlign="center"
-            my={4}
             width="100%"
         >
             <Stack
