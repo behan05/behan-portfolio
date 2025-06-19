@@ -16,7 +16,7 @@ function Layout() {
         <Box sx={{
             position: 'relative',
             minHeight: '100vh',
-            overflow: 'hidden'
+            zIndex: 1,
         }}>
             {/* Background Video */}
             <video
@@ -25,27 +25,29 @@ function Layout() {
                 muted
                 playsInline
                 style={{
-                    position: 'absolute',
+                    position: 'fixed',
                     top: 0,
                     left: 0,
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'brightness(0.1)', // Adjust brightness here
+                    filter: 'brightness(0.15)',
+                    zIndex: -2, // Send below overlay
                 }}
                 src={isMd ? jellyfishForSM : jellyfish}
                 type="video/mp4"
             />
 
-            {/* Optional Overlay */}
+            {/* Optional Dark Overlay */}
             <Box
                 sx={{
-                    position: 'absolute',
+                    position: 'fixed',
                     top: 0,
                     left: 0,
-                    right: 0,
-                    bottom: 0,
-                    // backgroundColor: 'rgba(0, 0, 0, 0.1)', // Extra dark layer
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                    zIndex: -1,
                 }}
             />
 
@@ -70,7 +72,7 @@ function Layout() {
                     <Outlet />
                 </Box>
 
-                {/* Sidebar */}
+                {/* Sidebar (optional) */}
                 {sidebar && (
                     <Box sx={{ flex: 1 }}>
                         <h1>Sidebar</h1>
