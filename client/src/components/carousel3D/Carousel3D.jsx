@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Box, Typography, Button, Stack, Link } from '@mui/material';
+import { Box, Typography, Button, Stack, Link, useMediaQuery, useTheme } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import gsap from 'gsap';
 import CarouselCard from './CarouselCard';
@@ -54,6 +54,9 @@ const Carousel3D = () => {
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(2);
 
+    const theme = useTheme()
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
+
     const rotateCarousel = (direction) => {
         const newIndex = (currentIndex + direction + items.length) % items.length;
         setCurrentIndex(newIndex);
@@ -78,117 +81,133 @@ const Carousel3D = () => {
     const current = items[currentIndex];
 
     return (
-        <Box sx={{ textAlign: 'center', mt: 10, px: 2 }}>
-            <Box
-                sx={{
-                    width: '100%',
-                    position: 'relative',
-                    display: 'flex',
-                    flexDirection: { xs: 'column', sm: 'row' },
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 2,
-                    mt: 5,
-                    px: 2,
-                    overflow: 'hidden'
-                }}
-            >
-                {/* Prev Button */}
-                <Button
-                    onClick={() => rotateCarousel(-1)}
-                    variant="outlined"
-                    sx={{
-                        bgcolor: 'transparent',
-                        minWidth: '80px',
-                        zIndex: 2,
-                        color: 'text.primary',
-                    }}
+        <>
+            <Stack maxWidth={800}>
+                <Typography
+                    variant="h4"
+                    color="text.primary"
+                    // fontSize={isSm ? "1.8rem" : "2.2rem"}
+                    gutterBottom
                 >
-                    Prev
-                </Button>
+                    Featured Projects
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                    A selection of real-world applications I’ve designed, developed, and deployed using the MERN stack and modern technologies.
+                </Typography>
+            </Stack>
 
-                {/* Carousel */}
+            <Box sx={{ textAlign: 'center', mt: 10, px: 2 }}>
                 <Box
-                    ref={containerRef}
                     sx={{
+                        width: '100%',
                         position: 'relative',
-                        width: { xs: '100%', sm: '600px', md: '900px' },
-                        height: { xs: '300px', sm: '380px', md: '500px' },
                         display: 'flex',
-                        justifyContent: 'center',
+                        flexDirection: { xs: 'column', sm: 'row' },
                         alignItems: 'center',
-                        perspective: '1200px',
-                        overflow: 'visible',
-                        zIndex: 1,
+                        justifyContent: 'center',
+                        gap: 2,
+                        mt: 5,
+                        px: 2,
+                        overflow: 'hidden'
                     }}
                 >
-                    {items.map((item) => (
-                        <CarouselCard key={item.id} item={item} />
-                    ))}
+                    {/* Prev Button */}
+                    <Button
+                        onClick={() => rotateCarousel(-1)}
+                        variant="outlined"
+                        sx={{
+                            bgcolor: 'transparent',
+                            minWidth: '80px',
+                            zIndex: 2,
+                            color: 'text.primary',
+                        }}
+                    >
+                        Prev
+                    </Button>
+
+                    {/* Carousel */}
+                    <Box
+                        ref={containerRef}
+                        sx={{
+                            position: 'relative',
+                            width: { xs: '100%', sm: '600px', md: '900px' },
+                            height: { xs: '300px', sm: '380px', md: '500px' },
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            perspective: '1200px',
+                            overflow: 'visible',
+                            zIndex: 1,
+                        }}
+                    >
+                        {items.map((item) => (
+                            <CarouselCard key={item.id} item={item} />
+                        ))}
+                    </Box>
+
+                    {/* Next Button */}
+                    <Button
+                        onClick={() => rotateCarousel(1)}
+                        variant="outlined"
+                        sx={{
+                            color: 'text.primary',
+                            bgcolor: 'transparent',
+                            minWidth: '80px',
+                            zIndex: 2,
+                        }}
+                    >
+                        Next
+                    </Button>
                 </Box>
 
-                {/* Next Button */}
-                <Button
-                    onClick={() => rotateCarousel(1)}
-                    variant="outlined"
-                    sx={{
-                        color: 'text.primary',
-                        bgcolor: 'transparent',
-                        minWidth: '80px',
-                        zIndex: 2,
-                    }}
-                >
-                    Next
-                </Button>
-            </Box>
 
+                <Box sx={{ mt: 6, maxWidth: 700, mx: 'auto' }}>
+                    <Typography variant="h5" sx={{ color: '#e0e0e0', mb: 1 }}>
+                        {current.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: '#aaa', mb: 2 }}>
+                        {current.description}
+                    </Typography>
 
-            <Box sx={{ mt: 6, maxWidth: 700, mx: 'auto' }}>
-                <Typography variant="h5" sx={{ color: '#e0e0e0', mb: 1 }}>
-                    {current.title}
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#aaa', mb: 2 }}>
-                    {current.description}
-                </Typography>
-
-                <Stack
-                    direction="row"
-                    justifyContent="center"
-                    spacing={2}
-                    useFlexGap
-                    flexWrap="wrap"
-                    my={4}
-                >
-                    <Button
-                        component={Link}
-                        href={current.link}
-                        target="_blank"
-                        rel="noopener"
-                        variant="outlined"
-                        disabled={current.link === '#'}
-                        sx={{
-                            bgcolor: 'transparent', color: 'text.primary'
-                        }}
+                    <Stack
+                        direction="row"
+                        justifyContent="center"
+                        spacing={2}
+                        useFlexGap
+                        flexWrap="wrap"
+                        my={4}
                     >
-                        Visit Site
-                    </Button>
+                        <Button
+                            component={Link}
+                            href={current.link}
+                            target="_blank"
+                            rel="noopener"
+                            variant="outlined"
+                            disabled={current.link === '#'}
+                            sx={{
+                                bgcolor: 'transparent', color: 'text.primary'
+                            }}
+                        >
+                            Visit Site
+                        </Button>
 
-                    <Button
-                        component={Link}
-                        href={current.sourceCode}
-                        target="_blank"
-                        rel="noopener"
-                        variant="outlined"
-                        startIcon={<GitHubIcon />}
-                        sx={{
-                            bgcolor: 'transparent', color: 'text.primary'
-                        }}
-                    >
-                        Source Code
-                    </Button>
-                </Stack>
+                        <Button
+                            component={Link}
+                            href={current.sourceCode}
+                            target="_blank"
+                            rel="noopener"
+                            variant="outlined"
+                            startIcon={<GitHubIcon />}
+                            sx={{
+                                bgcolor: 'transparent', color: 'text.primary'
+                            }}
+                        >
+                            Source Code
+                        </Button>
+                    </Stack>
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 };
 

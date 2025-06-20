@@ -107,20 +107,26 @@ function Capabilities() {
                 justifyContent: "center",
             }}
         >
-            <Typography
-                variant="h2"
-                color="text.primary"
-                fontSize={isSm ? "2rem" : "3rem"}
-                gutterBottom
-            >
-                Capabilities
-            </Typography>
+            <Stack maxWidth={800}>
+                <Typography
+                    variant="h4"
+                    color="text.primary"
+                    // fontSize={isSm ? "1.8rem" : "2.2rem"}
+                    gutterBottom
+                >
+                    What I Do Best
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                    These are the areas where I bring the most value — with hands-on experience, real projects, and problem-solving mindset.
+                </Typography>
+            </Stack>
 
             <Box
                 sx={{
                     display: "grid",
                     gridTemplateColumns: (isSm || isMd) ? "1fr" : "repeat(2, 1fr)",
                     gap: 4,
+                    my: 4
                 }}
             >
                 {capabilitiesData.map((item, i) => (
@@ -133,7 +139,7 @@ function Capabilities() {
                         <Typography
                             variant="subtitle1"
                             gutterBottom
-                            color="text.primary"
+                            color="text.secondary"
                             my={4}
                             fontSize={"1.2rem"}
                             fontWeight={600}

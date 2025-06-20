@@ -17,4 +17,6 @@ export {
     alpha,
     GlobalStyles,
     Grid,
+    Chip,
+    Paper,
 } from "@mui/material";

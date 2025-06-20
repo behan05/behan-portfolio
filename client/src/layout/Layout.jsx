@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { useState } from "react";
 import jellyfish from '../assets/bgVideo/jellyfish.mp4';
 import jellyfishForSM from '../assets/bgVideo/jellyfishForSM.mp4';
+import Footer from "../components/footer/Footer";
 
 function Layout() {
     const theme = useTheme();
@@ -79,6 +80,9 @@ function Layout() {
                     </Box>
                 )}
             </Box>
+
+            {/* Footer */}
+            <Footer />
         </Box>
     );
 }

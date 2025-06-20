@@ -14,7 +14,7 @@ function LandingPage() {
       <HeroSection />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack mt={10} justifyContent="center">
+      <Stack my={8} justifyContent="center">
         <RactangleFlower />
       </Stack>
 
@@ -25,7 +25,7 @@ function LandingPage() {
       <Capabilities />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack mt={10} justifyContent="center">
+      <Stack my={8} justifyContent="center">
         <RactangleFlower />
       </Stack>
 
@@ -33,7 +33,7 @@ function LandingPage() {
       <Carousel3D />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack mt={10} justifyContent="center">
+      <Stack my={8} justifyContent="center">
         <RactangleFlower />
       </Stack>
     </Box>
