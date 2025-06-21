@@ -9,16 +9,15 @@ import {
   Tooltip,
   Box,
   Typography,
-  Button
 } from "../../mui/muiComponents";
 import {
-  MenuIcon,
+  MenuOpenIcon,
   HomeIcon,
   InfoIcon,
   WorkspacesIcon,
   ContactsIcon,
   AttachFileIcon,
-  FiberManualRecordIcon
+  FiberManualRecordIcon,
 } from "../../icons/icons";
 import { NavLink } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
@@ -26,13 +25,16 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Logo from "../logo/Logo";
 
+// Sidebar
+import { useSidebar } from "../../context/SidebarContext";
+
 // Plug useGSAP
 gsap.registerPlugin(useGSAP);
 
 function Header() {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const { toggleSidebar } = useSidebar();
   const pages = [
     { text: "Home", href: "/", icon: <HomeIcon /> },
     { text: "About Me", href: "/about", icon: <InfoIcon /> },
@@ -149,8 +151,8 @@ function Header() {
 
           {/* Nav List */}
           {isSm ? (
-            <IconButton edge={'start'}>
-              <MenuIcon color='text.primary' />
+            <IconButton edge={'start'} onClick={toggleSidebar}>
+              <MenuOpenIcon color='text.primary' />
             </IconButton>
           ) : (
             <List

@@ -1,17 +1,19 @@
-import { Box, useMediaQuery, useTheme } from "../mui/muiComponents";
+import { Box, Button, useMediaQuery, useTheme } from "../mui/muiComponents";
 import Header from '../components/header/Header';
 import { Outlet } from 'react-router-dom';
-import { useState } from "react";
 import jellyfish from '../assets/bgVideo/jellyfish.mp4';
 import jellyfishForSM from '../assets/bgVideo/jellyfishForSM.mp4';
 import Footer from "../components/footer/Footer";
+
+import { useSidebar } from '../context/SidebarContext';
+import Sidebar from "../components/sidebar/Sidebar";
 
 function Layout() {
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
     const isMd = useMediaQuery(theme.breakpoints.down('md'));
     const isLg = useMediaQuery(theme.breakpoints.down('lg'));
-    const [sidebar, setSidebar] = useState(false);
+    const { sidebarOpen, closeSidebar } = useSidebar();
 
     return (
         <Box sx={{
@@ -74,13 +76,10 @@ function Layout() {
                 </Box>
 
                 {/* Sidebar (optional) */}
-                {sidebar && (
-                    <Box sx={{ flex: 1 }}>
-                        <h1>Sidebar</h1>
-                    </Box>
+                {sidebarOpen && (
+                    <Sidebar />
                 )}
             </Box>
-
             {/* Footer */}
             <Footer />
         </Box>

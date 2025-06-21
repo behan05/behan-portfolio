@@ -1,7 +1,5 @@
 // icons.js
 
-export { default as ToggleOnIcon } from '@mui/icons-material/ToggleOn';
-export { default as ToggleOffIcon } from '@mui/icons-material/ToggleOff';
 export { default as MenuIcon } from '@mui/icons-material/Menu';
 export { default as MenuOpenIcon } from '@mui/icons-material/MenuOpen';
 export { default as LinkedInIcon } from '@mui/icons-material/LinkedIn';

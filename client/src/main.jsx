@@ -5,12 +5,14 @@ import { RouterProvider } from 'react-router-dom';
 import { routers } from './routers';
 import { theme } from "./theme/index";
 import CustomCursor from './components/customCursor/CustomCursor';
+import { SidebarProvider } from './context/SidebarContext';
 
 createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={theme}>
-    <CustomCursor />
-    <RouterProvider router={routers}>
-      <CssBaseline />
-    </RouterProvider>
+    <CssBaseline />
+    <SidebarProvider>
+      <CustomCursor />
+      <RouterProvider router={routers} />
+    </SidebarProvider>
   </ThemeProvider>
 );
