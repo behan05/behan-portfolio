@@ -1,8 +1,6 @@
-import { Box, Button, useMediaQuery, useTheme } from "../mui/muiComponents";
+import { Box, useMediaQuery, useTheme } from "../mui/muiComponents";
 import Header from '../components/header/Header';
 import { Outlet } from 'react-router-dom';
-import jellyfish from '../assets/bgVideo/jellyfish.mp4';
-import jellyfishForSM from '../assets/bgVideo/jellyfishForSM.mp4';
 import Footer from "../components/footer/Footer";
 
 import { useSidebar } from '../context/SidebarContext';
@@ -35,9 +33,9 @@ function Layout() {
                     height: '100%',
                     objectFit: 'cover',
                     filter: 'brightness(0.15)',
-                    zIndex: -2, // Send below overlay
+                    zIndex: -2,
                 }}
-                src={isMd ? jellyfishForSM : jellyfish}
+                src={isMd ? "/videos/jellyFish.mp4" : "/videos/jellyFish.mp4"}
                 type="video/mp4"
             />
 
