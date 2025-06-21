@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/Layout";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
+import ProjectPages from "./pages/ProjectsPage";
+import PageNotFound from './pages/PageNotFound';
 
 export const routers = createBrowserRouter([
     {
@@ -10,7 +12,8 @@ export const routers = createBrowserRouter([
         children: [
             { path: '/', element: <LandingPage /> },
             { path: '/about', element: <AboutPage /> },
-            { path: '*', element: <h4>404 Page Not Found</h4> },
+            { path: '/projects', element: <ProjectPages /> },
         ]
-    }
+    },
+    { path: '*', element: <PageNotFound /> },
 ]);

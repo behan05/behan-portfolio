@@ -89,7 +89,7 @@ const Carousel3D = () => {
                     // fontSize={isSm ? "1.8rem" : "2.2rem"}
                     gutterBottom
                 >
-                    Featured Projects
+                    Featured Projects 3D
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                     A selection of real-world applications I’ve designed, developed, and deployed using the MERN stack and modern technologies.
