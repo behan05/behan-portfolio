@@ -1,10 +1,11 @@
+// ProjectsPage.jsx
 import React, { useRef } from 'react';
 import {
   Box,
   Typography,
-  Container,
   useTheme,
   useMediaQuery,
+  Stack,
 } from '../mui/muiComponents';
 
 // Project Images
@@ -19,8 +20,10 @@ import gsap from 'gsap';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// import caroset3D component
-import Carouset3D from "../components/carousel3D/Carousel3D"
+// Import components
+import Carousel3D from "../components/carousel3D/Carousel3D"
+import ProjectCards from '../components/ProjectCrads';
+import RactangleFlower from '../components/ractangleFlower/RactangleFlower';
 
 const cardItems = [
   {
@@ -66,18 +69,15 @@ const cardItems = [
 ]
 
 function ProjectsPage() {
-
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
   const isMd = useMediaQuery(theme.breakpoints.down('md'));
-  const isLg = useMediaQuery(theme.breakpoints.down('lg'));
-  
-  const headingRef = useRef();
-  const paragraphRef = useRef();
 
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const carouselRef = useRef(null);
 
   useGSAP(() => {
-    // Animate heading
     gsap.fromTo(
       headingRef.current,
       { y: -50, opacity: 0 },
@@ -93,7 +93,6 @@ function ProjectsPage() {
       }
     );
 
-    // Animate paragraph
     gsap.fromTo(
       paragraphRef.current,
       { y: 30, opacity: 0 },
@@ -109,12 +108,42 @@ function ProjectsPage() {
         },
       }
     );
+
+    gsap.from('.project-card', {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.project-card',
+        start: 'top 90%',
+      },
+    });
+
+    gsap.fromTo(carouselRef.current, {
+      opacity: 0,
+      x: 100
+    }, {
+      opacity: 1,
+      x: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: carouselRef.current,
+        top: "10%",
+      }
+    })
   }, []);
 
   return (
-    <Container>
-      {/* header section */}
-      <Box textAlign="center">
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      px: isSm ? 0 : 2,
+      overflow: 'hidden'
+    }}>
+      <Box component="section" textAlign="center">
         <Typography
           ref={headingRef}
           variant="h2"
@@ -130,21 +159,33 @@ function ProjectsPage() {
           maxWidth="sm"
           mx="auto"
         >
-          Welcome to my project showcase! Below are some of the best works I've built — from frontend interfaces to full-stack applications, each project reflects my journey, passion, and skill growth in web development.
+          Welcome to my project showcase! Below are some of the best works I've built from frontend interfaces to full-stack applications, each project reflects my journey, passion, and skill growth in web development.
         </Typography>
       </Box>
 
-
-      {/* Future: Add animated project cards here */}
-      <Box sx={{
-
-      }}>
-
+      <Box
+        component="section"
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: (isSm || isMd) ? '1fr' : 'repeat(2, 1fr)',
+          gap: 3,
+        }}
+      >
+        {cardItems.map((item) => (
+          <ProjectCards key={item.id} item={item} />
+        ))}
       </Box>
 
-      {/* Future: Add animated project cards here with 3D look */}
-      <Carouset3D />
-    </Container>
+      {/* === Decorative Rotating Rectangle Graphic === */}
+      <Stack mb={-10} justifyContent="center">
+        <RactangleFlower />
+      </Stack>
+
+      {/* ===  Carousel3D  === */}
+      <Stack ref={carouselRef}>
+        <Carousel3D />
+      </Stack>
+    </Box>
   );
 }
 

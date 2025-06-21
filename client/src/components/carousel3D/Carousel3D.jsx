@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Box, Typography, Button, Stack, Link, useMediaQuery, useTheme } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import gsap from 'gsap';
 import CarouselCard from './CarouselCard';
 import jellyFish from "../../assets/images/jellyFish.jpg";
@@ -82,21 +83,20 @@ const Carousel3D = () => {
 
     return (
         <>
-            <Stack maxWidth={800}>
+            <Stack maxWidth={800} mt={10}>
                 <Typography
                     variant="h4"
                     color="text.primary"
-                    // fontSize={isSm ? "1.8rem" : "2.2rem"}
                     gutterBottom
                 >
                     Featured Projects 3D
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                <Typography variant="subtitle1" color="text.secondary">
                     A selection of real-world applications I’ve designed, developed, and deployed using the MERN stack and modern technologies.
                 </Typography>
             </Stack>
 
-            <Box sx={{ textAlign: 'center', mt: 10, px: 2 }}>
+            <Box sx={{ textAlign: 'center', px: 2 }}>
                 <Box
                     sx={{
                         width: '100%',
@@ -184,6 +184,7 @@ const Carousel3D = () => {
                             rel="noopener"
                             variant="outlined"
                             disabled={current.link === '#'}
+                            startIcon={<VisibilityIcon />}
                             sx={{
                                 bgcolor: 'transparent', color: 'text.primary'
                             }}
