@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Button } from "../../mui/muiComponents";
 
 const CustomButton = forwardRef(({ children, sx = {}, ...props }, ref) => {
