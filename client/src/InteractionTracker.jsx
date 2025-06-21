@@ -7,7 +7,7 @@ const InteractionTracker = () => {
             const page = window.location.pathname;
             const screen = `${window.innerWidth}x${window.innerHeight}`;
 
-            fetch('http://localhost:8000/api/logs', {
+            fetch('https://behan-portfolio-server.onrender.com/api/logs', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ element, page, screen }),

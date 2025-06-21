@@ -127,7 +127,7 @@ function Header() {
               gap={1}
               alignItems="center"
               component={NavLink}
-              to={'DOTO'}
+              to={'/contact'}
               sx={{ textDecoration: 'none', color: 'inherit' }}
             >
               <FiberManualRecordIcon

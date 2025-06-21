@@ -50,7 +50,7 @@ function Contact() {
       return;
     }
 
-    fetch('http://localhost:8000/api/users/contact', {
+    fetch('https://behan-portfolio-server.onrender.com/api/users/contact', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
