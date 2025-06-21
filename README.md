@@ -4,7 +4,7 @@ A modern, full-stack developer portfolio website that highlights my skills, proj
 
 ## 🌐 Live Preview
 
-🔗 [Visit Live Portfolio](https://your-live-site-url.com) <!-- comming soon -->
+🔗 [Visit Live Portfolio](https://behan-portfolio.vercel.app/) <!-- comming soon -->
 
 ---
 
