@@ -35,7 +35,7 @@ function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic Validation
@@ -50,7 +50,12 @@ function Contact() {
       return;
     }
 
-    // Simulate submission (e.g. API call)
+    fetch('http://localhost:8000/api/users/contact', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form)
+    }).catch(err => console.error('Click log error:', err.message));
+
     setTimeout(() => {
       toast.success('Great! I’ve received your message and will respond as soon as possible.');
       setForm({
