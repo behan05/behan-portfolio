@@ -25,7 +25,7 @@ function LandingPage() {
       <Capabilities />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={8} justifyContent="center">
+      <Stack justifyContent="center">
         <RactangleFlower />
       </Stack>
 
@@ -33,7 +33,7 @@ function LandingPage() {
       <Carousel3D />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={8} justifyContent="center">
+      <Stack justifyContent="center">
         <RactangleFlower />
       </Stack>
     </Box>

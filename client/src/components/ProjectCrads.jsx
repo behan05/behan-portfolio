@@ -60,7 +60,7 @@ function ProjectCards({ item }) {
         src={item.image}
         alt={item.title}
         width={'100%'}
-        height={{ xs: 200, sm: 300, md: 400 }}
+        height={{ xs: 200, sm: 300, md: 370 }}
         sx={{
           objectFit: 'cover',
           filter: 'brightness(110%) saturate(120%) contrast(120%)',
