@@ -224,7 +224,7 @@ function HeroSection() {
                         startIcon={<WorkOutlineIcon />}
                         variant="outlined"
                         component={Link}
-                        to={'/hire-me'}
+                        to={'/contact'}
                         color='text.primary'
                         sx={{
                             backgroundColor: 'transparent',
