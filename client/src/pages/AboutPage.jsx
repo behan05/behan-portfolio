@@ -137,12 +137,12 @@ function AboutPage() {
             I’m not here just to code. I’m here to create, connect, and contribute something that matters.
           </Typography>
           <Typography
+            color="text.secondary"
             component={'a'}
             href={'#journey'}
             sx={{
-              textDecoration: 'none',
-              fontWeight: 900,
-              textShadow: `0 0 0.3rem red`
+              fontStyle: 'italic',
+              fontWeight: 700
             }}
           >
             Know about my journey...
