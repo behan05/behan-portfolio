@@ -100,7 +100,6 @@ function Capabilities() {
             component="section"
             ref={sectionRef}
             sx={{
-                minHeight: "100vh",
                 my: 6,
                 display: "flex",
                 flexDirection: "column",

@@ -275,7 +275,7 @@ function HeroSection() {
                     maxHeight={200}
                     maxWidth={200}
                     sx={{
-                        background: (isSm || isMd) ? '#000' : theme.palette.text.primary,
+                        background: theme.palette.text.primary,
                         borderRadius: 2,
                         filter: 'brightness(80)',
                         p: 3,
