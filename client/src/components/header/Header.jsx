@@ -9,13 +9,13 @@ import {
   Tooltip,
   Box,
   Typography,
+  Button
 } from "../../mui/muiComponents";
 import {
   MenuIcon,
   HomeIcon,
   InfoIcon,
   WorkspacesIcon,
-  ForumIcon,
   ContactsIcon,
   AttachFileIcon,
   FiberManualRecordIcon
@@ -35,10 +35,9 @@ function Header() {
 
   const pages = [
     { text: "Home", href: "/", icon: <HomeIcon /> },
-    { text: "Intro", href: "/about", icon: <InfoIcon /> },
-    { text: "Builds", href: "/projects", icon: <WorkspacesIcon /> },
-    { text: "Say Hi", href: "/contact", icon: <ContactsIcon /> },
-    { text: "Resume", href: "/download-resume", icon: <AttachFileIcon /> },
+    { text: "About Me", href: "/about", icon: <InfoIcon /> },
+    { text: "My Work", href: "/projects", icon: <WorkspacesIcon /> },
+    { text: "Let's Talk", href: "/contact", icon: <ContactsIcon /> },
   ];
 
   const navRef = useRef(null);
@@ -55,34 +54,30 @@ function Header() {
         return;
       }
 
-      // Ensure all links are visible first (before animating)
       links.forEach(link => {
         link.style.opacity = '0';
         link.style.transform = 'translateY(-20px)';
       });
 
-      // Now animate from current state to visible
       gsap.to(links, {
         opacity: 1,
         y: 0,
         stagger: 0.20,
         duration: 0.6,
         ease: "power2.out",
-        clearProps: "all", // removes inline styles after animation
+        clearProps: "all",
       });
     });
   }, []);
 
-  // only Hi except Say Animation
+  // Optional: animate specific links (if needed)
   useEffect(() => {
     const elements = navRef.current?.querySelectorAll('.nav-link');
-
-    if (!elements || elements.length === 0) return;
+    if (!elements) return;
 
     elements.forEach((element) => {
-      if (element.textContent.trim().toLowerCase() === 'say hi') {
+      if (element.textContent.trim().toLowerCase() === "let's talk") {
         const el = element;
-
         const intervalId = setInterval(() => {
           gsap.fromTo(
             el,
@@ -97,13 +92,10 @@ function Header() {
             }
           );
         }, 3000);
-
-        // Cleanup
         return () => clearInterval(intervalId);
       }
     });
   }, []);
-
 
   return (
     <AppBar
@@ -113,17 +105,10 @@ function Header() {
         backgroundColor: 'transparent',
         backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(10px)',
-        transition: 'background-color 0.3s ease',
         py: 1,
       }}
     >
-      <Toolbar
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-
+      <Toolbar sx={{ display: "flex", flexWrap: "wrap" }}>
         <Stack
           component="section"
           direction="row"
@@ -132,7 +117,7 @@ function Header() {
           flexWrap={'wrap'}
           flexGrow={1}
         >
-          {/* Left: Logo + Status */}
+          {/* Logo + Status */}
           <Stack direction="row" alignItems="center" gap={2}>
             <Logo />
             <Stack
@@ -144,23 +129,15 @@ function Header() {
               sx={{ textDecoration: 'none', color: 'inherit' }}
             >
               <FiberManualRecordIcon
-                aria-label="online indicator"
                 sx={{
                   fontSize: '12px',
                   color: theme.palette.success.main,
-                  bgcolor: theme.palette.background.default,
                   borderRadius: '50%',
                   animation: 'pulseGlow 1.5s infinite',
                   '@keyframes pulseGlow': {
-                    '0%': {
-                      filter: `drop-shadow(0 0 0px ${theme.palette.success.main})`,
-                    },
-                    '50%': {
-                      filter: `drop-shadow(0 0 4px ${theme.palette.success.main})`,
-                    },
-                    '100%': {
-                      filter: `drop-shadow(0 0 0px ${theme.palette.success.main})`,
-                    },
+                    '0%': { filter: `drop-shadow(0 0 0px ${theme.palette.success.main})` },
+                    '50%': { filter: `drop-shadow(0 0 4px ${theme.palette.success.main})` },
+                    '100%': { filter: `drop-shadow(0 0 0px ${theme.palette.success.main})` },
                   },
                 }}
               />
@@ -170,8 +147,7 @@ function Header() {
             </Stack>
           </Stack>
 
-          {/* Right: Pages List */}
-
+          {/* Nav List */}
           {isSm ? (
             <IconButton edge={'start'}>
               <MenuIcon color='text.primary' />
@@ -184,8 +160,9 @@ function Header() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 position: 'relative',
-                gap:1
-              }}>
+                gap: 1
+              }}
+            >
               {pages.map((navItem, index) => (
                 <Tooltip
                   key={index}
@@ -243,12 +220,42 @@ function Header() {
                   </Box>
                 </Tooltip>
               ))}
+
+              {/* Resume Download Button */}
+              <Tooltip
+                title={<AttachFileIcon />}
+                arrow
+                placement="bottom"
+              >
+                <Box
+                  component="a"
+                  href="/Behan_Kumar_Resume.pdf"
+                  download
+                  className="nav-link"
+                  sx={{
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 1,
+                    color: theme.palette.text.primary,
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover,
+                      transform: 'translateY(-1px)',
+                    },
+                  }}
+                >
+                  <Typography variant="body2" textAlign="center" whiteSpace="nowrap">
+                    Download Resume
+                  </Typography>
+                </Box>
+              </Tooltip>
             </List>
           )}
-
         </Stack>
       </Toolbar>
-    </AppBar >
+    </AppBar>
   );
 }
 
