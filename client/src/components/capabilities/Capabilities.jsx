@@ -76,23 +76,25 @@ function Capabilities() {
         borderBottom: `1px dotted ${theme.palette.primary.main}`,
         p: 2,
         minHeight: 140,
-        backdropFilter: "blur(10px)",
+        backdropFilter: "blur(14px)",
+        borderRadius: 1,
         backgroundColor: "rgba(192, 194, 196, 0.1)",
         boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
     };
 
     const numberBoxSx = {
-        bgcolor: theme.palette.primary.main,
         width: 40,
         height: 40,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        borderTopRightRadius: "50%",
-        borderBottomRightRadius: "50%",
-        boxShadow: `3px 0 1rem ${theme.palette.text.secondary}`,
-        color: theme.palette.common.white,
-        fontWeight: "bold",
+        borderTopRightRadius: "25%",
+        borderBottomRightRadius: "25%",
+        boxShadow: `inset 2px 2px 1px ${theme.palette.warning.main}`,
+        color: theme.palette.text.main,
+        letterSpacing: 2,
+        backgroundColor: 'transparent',
+        border: `1px dotted ${theme.palette.primary.main}`,
     };
 
     return (
@@ -110,7 +112,6 @@ function Capabilities() {
                 <Typography
                     variant="h4"
                     color="text.primary"
-                    // fontSize={isSm ? "1.8rem" : "2.2rem"}
                     gutterBottom
                 >
                     What I Do Best

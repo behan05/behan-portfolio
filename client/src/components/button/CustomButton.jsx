@@ -10,7 +10,8 @@ const CustomButton = forwardRef(({ children, sx = {}, ...props }, ref) => {
         textTransform: 'none',
         px: 3,
         py: 1,
-        fontWeight: 600,
+        fontWeight: 100,
+        fontStyle: 'oblique',
         ...sx,
       }}
       {...props}

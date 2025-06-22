@@ -228,9 +228,8 @@ function HeroSection() {
                         color='text.primary'
                         sx={{
                             backgroundColor: 'transparent',
-                            fontFamily: '"Lora", serif',
-                            fontSize: '1.125rem',
                             border: `1px dotted ${theme.palette.primary.main}`,
+                            boxShadow: `inset 0 0 4px ${theme.palette.primary.main}`,
                         }}
                     >
                         Hire Me
@@ -245,9 +244,8 @@ function HeroSection() {
                         color='text.primary'
                         sx={{
                             backgroundColor: 'transparent',
-                            fontFamily: '"Lora", serif',
-                            fontSize: '1.125rem',
                             border: `1px dotted ${theme.palette.primary.main}`,
+                            boxShadow: `inset 0 0 4px ${theme.palette.primary.main}`,
                         }}
                     >
                         View My Work

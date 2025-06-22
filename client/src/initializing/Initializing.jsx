@@ -11,7 +11,7 @@ function InitializingScreen({ onComplete }) {
                 duration: 0.5,
                 onComplete,
             });
-        }, 2500); // 2.5 sec delay for effect
+        }, 2000); // 2.5 sec delay for effect
 
         return () => clearTimeout(timer);
     }, [onComplete]);

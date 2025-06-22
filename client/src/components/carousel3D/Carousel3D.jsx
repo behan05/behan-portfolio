@@ -4,9 +4,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import gsap from 'gsap';
 import CarouselCard from './CarouselCard';
-import jellyFish from "../../assets/images/jellyFish.jpg";
-import jellyFish2 from "../../assets/images/jellyFish2.jpg";
-import jellyFish3 from "../../assets/images/jellyFish3.jpg";
 
 const items = [
     {
@@ -15,31 +12,31 @@ const items = [
         description: `A responsive and modern digital agency website built using React and Material UI, showcasing services, portfolio, and a call-to-action for clients and businesses.`,
         link: `https://brandora-agency.vercel.app`,
         sourceCode: `https://github.com/behan05/brandora-digital-solutions`,
-        image: jellyFish
+        image: '/projectImages/brandora660px.png'
     },
     {
         id: 2,
-        title: 'Real Time Chat App',
-        description: `A full-stack real-time chat application with user authentication, private messaging, and socket-based communication built using React, Node.js, Express, Socket.IO, and MongoDB.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/real-time-chat-app`,
-        image: jellyFish2
-    },
-    {
-        id: 3,
-        title: 'Typing Speed Tester',
-        description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/typing-speed-tester`,
-        image: jellyFish3
-    },
-    {
-        id: 4,
         title: 'Admin Dashboard',
         description: `A modern and responsive Admin Dashboard built with React and Material UI (MUI v5). Features a customizable AppBar, Sidebar, and reusable components.`,
         link: `https://react-admin-panel-behan.vercel.app/`,
         sourceCode: `https://github.com/behan05/material-ui-admin-dashboard`,
-        image: jellyFish
+        image: '/projectImages/admin660px.png'
+    },
+    {
+        id: 3,
+        title: 'Real Time Chat App',
+        description: `A full-stack real-time chat application with user authentication, private messaging, and socket-based communication built using React, Node.js, Express, Socket.IO, and MongoDB.`,
+        link: `#`,
+        sourceCode: `https://github.com/behan05/real-time-chat-app`,
+        image: '/projectImages/comingSoon.png'
+    },
+    {
+        id: 4,
+        title: 'Typing Speed Tester',
+        description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
+        link: `#`,
+        sourceCode: `https://github.com/behan05/typing-speed-tester`,
+        image: '/projectImages/comingSoon.png'
     },
     {
         id: 5,
@@ -47,16 +44,13 @@ const items = [
         description: `MitraVue — All-in-one codebase for a modern Indian random video chat platform, using React, MUI, GSAP, WebRTC, Node.js, and AI/ML integration.`,
         link: `#`,
         sourceCode: `https://github.com/behan05/mitravue`,
-        image: jellyFish2
+        image: '/projectImages/comingSoon.png'
     },
 ];
 
 const Carousel3D = () => {
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(2);
-
-    const theme = useTheme()
-    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
 
     const rotateCarousel = (direction) => {
         const newIndex = (currentIndex + direction + items.length) % items.length;

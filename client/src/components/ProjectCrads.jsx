@@ -63,12 +63,12 @@ function ProjectCards({ item }) {
         height={{ xs: 200, sm: 300, md: 370 }}
         sx={{
           objectFit: 'cover',
-          filter: 'brightness(110%) saturate(120%) contrast(120%)',
+          filter: 'saturate(110%) contrast(110%)',
           boxShadow: `0 0 1px ${theme.palette.primary.main}`,
           borderRadius: 1,
           transition: 'transform 0.3s ease',
           ":hover": {
-            transform: 'scale(1.05)',
+            transform: 'scale(1.03)',
           },
         }}
         onError={(e) => (e.target.src = '/fallback.jpg')}

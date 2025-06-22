@@ -8,8 +8,6 @@ import dog4 from '../assets/sadAnimalsImg/animal4.jpg';
 import dog5 from '../assets/sadAnimalsImg/animal5.jpg';
 import dog6 from '../assets/sadAnimalsImg/animal6.jpg';
 
-import bgImg from '../assets/images/jellyFish.jpg';
-
 const sadAnimalImages = [dog1, dog2, dog3, dog4, dog5, dog6];
 
 const PageNotFound = () => {
@@ -23,7 +21,7 @@ const PageNotFound = () => {
             sx={{
                 minWidth: '100%',
                 minHeight: '100vh',
-                backgroundImage: `url(${bgImg})`,
+                // backgroundImage: `url(${bgImg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

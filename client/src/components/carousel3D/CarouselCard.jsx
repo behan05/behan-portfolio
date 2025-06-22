@@ -13,15 +13,23 @@ const CarouselCard = ({ item }) => {
                 overflow: 'hidden',
                 position: 'absolute',
                 transformStyle: 'preserve-3d',
-                backgroundColor: '#111',
+                backgroundColor: 'transparent',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
             }}
         >
-            <img
+            <Box
+                component="img"
                 src={item.image}
                 alt={item.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 title={item.title}
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'scale-down', // scales down if large, else original size
+                }}
             />
         </Box>
     );
