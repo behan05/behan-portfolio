@@ -4,6 +4,7 @@ import { Box, Stack } from "../mui/muiComponents";
 import Slider from "../components/slider/Slider";
 import Capabilities from "../components/capabilities/Capabilities";
 import Carousel3D from "../components/carousel3D/Carousel3D";
+import Contact from "../components/contact/Contact";
 
 function LandingPage() {
 
@@ -33,9 +34,12 @@ function LandingPage() {
       <Carousel3D />
 
       {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack justifyContent="center">
+      <Stack my={2} justifyContent="center">
         <RactangleFlower />
       </Stack>
+
+      {/* === Contact === */}
+      <Contact />
     </Box>
 
   )
