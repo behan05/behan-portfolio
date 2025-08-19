@@ -32,7 +32,7 @@ function Layout() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    filter: 'brightness(0.15)',
+                    filter: 'brightness(0.10)',
                     zIndex: -2,
                 }}
                 src={isMd ? "/videos/jellyFish.mp4" : "/videos/jellyFish.mp4"}

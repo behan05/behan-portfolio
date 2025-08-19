@@ -139,13 +139,14 @@ function AboutPage() {
           <Typography
             color="text.secondary"
             component={'a'}
-            href={'#journey'}
+            href={'https://dev.to/behan05/my-journey-as-a-full-stack-developer-520l'}
+            target="_blank"
             sx={{
               fontStyle: 'italic',
               fontWeight: 700
             }}
           >
-            Know about my journey...
+            Read my short article about my journey as a Full-Stack Developer →
           </Typography>
 
           <Button

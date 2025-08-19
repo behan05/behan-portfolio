@@ -26,9 +26,9 @@ const items = [
         id: 3,
         title: 'Real Time Chat App',
         description: `A full-stack real-time chat application with user authentication, private messaging, and socket-based communication built using React, Node.js, Express, Socket.IO, and MongoDB.`,
-        link: `#`,
+        link: `https://connect-link-three.vercel.app/`,
         sourceCode: `https://github.com/behan05/real-time-chat-app`,
-        image: '/projectImages/comingSoon.png'
+        image: '/projectImages/chat600px.png'
     },
     {
         id: 4,
