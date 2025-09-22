@@ -21,46 +21,38 @@ import ProjectCards from '../components/ProjectCrads';
 import RactangleFlower from '../components/ractangleFlower/RactangleFlower';
 
 const cardItems = [
-    {
-        id: 1,
-        title: 'Brandora Digital Solutions',
-        description: `A responsive and modern digital agency website built using React and Material UI, showcasing services, portfolio, and a call-to-action for clients and businesses.`,
-        link: `https://brandora-agency.vercel.app`,
-        sourceCode: `https://github.com/behan05/brandora-digital-solutions`,
-        image: '/projectImages/brandoraBigImg.png'
-    },
-    {
-        id: 2,
-        title: 'Admin Dashboard',
-        description: `A modern and responsive Admin Dashboard built with React and Material UI (MUI v5). Features a customizable AppBar, Sidebar, and reusable components.`,
-        link: `https://react-admin-panel-behan.vercel.app/`,
-        sourceCode: `https://github.com/behan05/material-ui-admin-dashboard`,
-        image: '/projectImages/adminBigImg.png'
-    },
-    {
-        id: 3,
-        title: 'Real Time Chat App',
-        description: `A full-stack real-time chat application with user authentication, private messaging, and socket-based communication built using React, Node.js, Express, Socket.IO, and MongoDB.`,
-        link: `https://connect-link-three.vercel.app/`,
-        sourceCode: `https://github.com/behan05/real-time-chat-app`,
-        image: '/projectImages/chatBigImg.png'
-    },
-    {
-        id: 4,
-        title: 'Typing Speed Tester',
-        description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/typing-speed-tester`,
-        image: '/projectImages/comingSoon.png'
-    },
-    {
-        id: 5,
-        title: 'Mitravue',
-        description: `MitraVue — All-in-one codebase for a modern Indian random video chat platform, using React, MUI, GSAP, WebRTC, Node.js, and AI/ML integration.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/mitravue`,
-        image: '/projectImages/comingSoon.png'
-    },
+  {
+    id: 1,
+    title: 'Pairly Chat (open-source)',
+    description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB, this open-source project focuses on protecting users while providing a smooth chat experience.`,
+    link: `https://pairly.chat`,
+    sourceCode: `https://github.com/behan05/pairly`,
+    image: '/projectImages/chatBigImg.png'
+  },
+  {
+    id: 2,
+    title: 'Admin Dashboard',
+    description: `A modern and responsive Admin Dashboard built with React and Material UI (MUI v5). Features a customizable AppBar, Sidebar, and reusable components.`,
+    link: `https://react-admin-panel-behan.vercel.app/`,
+    sourceCode: `https://github.com/behan05/material-ui-admin-dashboard`,
+    image: '/projectImages/adminBigImg.png'
+  },
+  {
+    id: 3,
+    title: 'Brandora Digital Solutions',
+    description: `A responsive and modern digital agency website built using React and Material UI, showcasing services, portfolio, and a call-to-action for clients and businesses.`,
+    link: `https://brandora-agency.vercel.app`,
+    sourceCode: `https://github.com/behan05/brandora-digital-solutions`,
+    image: '/projectImages/brandoraBigImg.png'
+  },
+  {
+    id: 4,
+    title: 'Typing Speed Tester',
+    description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
+    link: `#`,
+    sourceCode: `https://github.com/behan05/typing-speed-tester`,
+    image: '/projectImages/comingSoon.png'
+  },
 ];
 
 function ProjectsPage() {

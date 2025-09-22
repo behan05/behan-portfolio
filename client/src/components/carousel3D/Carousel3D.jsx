@@ -24,10 +24,10 @@ const items = [
     },
     {
         id: 3,
-        title: 'Real Time Chat App',
-        description: `A full-stack real-time chat application with user authentication, private messaging, and socket-based communication built using React, Node.js, Express, Socket.IO, and MongoDB.`,
-        link: `https://connect-link-three.vercel.app/`,
-        sourceCode: `https://github.com/behan05/real-time-chat-app`,
+        title: 'Pairly Chat (open-source)',
+        description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB, this open-source project focuses on protecting users while providing a smooth chat experience.`,
+        link: `https://pairly.chat`,
+        sourceCode: `https://github.com/behan05/pairly`,
         image: '/projectImages/chat600px.png'
     },
     {
@@ -36,14 +36,6 @@ const items = [
         description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
         link: `#`,
         sourceCode: `https://github.com/behan05/typing-speed-tester`,
-        image: '/projectImages/comingSoon.png'
-    },
-    {
-        id: 5,
-        title: 'Mitravue',
-        description: `MitraVue — All-in-one codebase for a modern Indian random video chat platform, using React, MUI, GSAP, WebRTC, Node.js, and AI/ML integration.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/mitravue`,
         image: '/projectImages/comingSoon.png'
     },
 ];

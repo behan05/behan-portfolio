@@ -61,7 +61,7 @@ const Footer = () => {
           </IconButton>
           <IconButton
             component={Link}
-            href="https://www.linkedin.com/in/behan-kumar-b73660351/"
+            href="https://www.linkedin.com/in/behan-kumar-25151b2ba/"
             target="_blank"
             rel="noopener"
             color="inherit"

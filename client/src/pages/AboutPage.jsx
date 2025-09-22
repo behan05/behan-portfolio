@@ -126,7 +126,7 @@ function AboutPage() {
           </Typography>
 
           <Typography variant="body1" color="text.secondary">
-            I build web apps with code — and a bit of heart. 💙
+            I build web apps with code — and a bit of heart. 💙 I’m also the <strong>open-source maintainer of Pairly.chat</strong>, a real-time chat platform that prioritizes user privacy and security.
           </Typography>
 
           <Typography variant="body1" color="text.secondary">
@@ -270,8 +270,18 @@ function AboutPage() {
           </Typography>
 
           <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
+            I’m currently enhancing <strong>Pairly.chat</strong> with a <strong>private chat feature</strong>.<br />
+            For now, the project supports <strong>text-based chat only</strong>.<br />
+            In the next version, <strong>video chat will be available in Couple Mode only</strong> — not in random or private chats — to ensure user security and privacy.<br />
+            The platform is designed to protect users from interacting with the wrong person, and only once both users opt into Couple Mode can they access video/audio chat.<br />
+            Additional features are planned to enhance safety, privacy, and overall user experience.<br />
+            You can check the project on <a href="https://github.com/behan05/pairly" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          </Typography>
+
+          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
             I’m excited to join a team where I can contribute, learn, and build production-grade systems that actually make a difference. If you're building something meaningful — I’d love to be part of it.
           </Typography>
+
         </Stack>
 
       </Box>

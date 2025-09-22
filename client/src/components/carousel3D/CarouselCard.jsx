@@ -28,7 +28,7 @@ const CarouselCard = ({ item }) => {
                 sx={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'scale-down', // scales down if large, else original size
+                    objectFit: 'scale-down',
                 }}
             />
         </Box>
