@@ -1,4 +1,3 @@
-import React from 'react'
 import { Stack, Box } from '../../mui/muiComponents';
 import { NavLink } from "react-router-dom";
 
@@ -16,7 +15,7 @@ function Logo() {
             src="/logo.png"
             alt="Behan Portfolio Logo"
             sx={{
-              width: { xs: 80, sm: 100 },
+              width: 60,
               userSelect: 'none',
               display: 'block',
             }}

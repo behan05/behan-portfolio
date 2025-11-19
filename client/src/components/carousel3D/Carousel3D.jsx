@@ -24,18 +24,18 @@ const items = [
     },
     {
         id: 3,
-        title: 'Pairly Chat (open-source)',
+        title: 'Pairly Chat',
         description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB, this open-source project focuses on protecting users while providing a smooth chat experience.`,
         link: `https://pairly.chat`,
-        sourceCode: `https://github.com/behan05/pairly`,
+        sourceCode: ``,
         image: '/projectImages/chat600px.png'
     },
     {
         id: 4,
         title: 'Typing Speed Tester',
         description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
-        link: `#`,
-        sourceCode: `https://github.com/behan05/typing-speed-tester`,
+        link: ``,
+        sourceCode: ``,
         image: '/projectImages/comingSoon.png'
     },
 ];

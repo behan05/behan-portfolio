@@ -120,7 +120,7 @@ function Header() {
           flexGrow={1}
         >
           {/* Logo + Status */}
-          <Stack direction="row" alignItems="center" gap={2}>
+          <Stack direction="row" alignItems="center" gap={0.2}>
             <Logo />
             <Stack
               direction="row"
