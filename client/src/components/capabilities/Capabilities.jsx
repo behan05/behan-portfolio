@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Box, Stack, Typography, useMediaQuery, useTheme } from "../../mui/muiComponents";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +13,16 @@ function Capabilities() {
 
     const sectionRef = useRef(null);
     const boxRefs = useRef([]);
+
+    const rainDrops = useMemo(
+        () =>
+            Array.from({ length: 12 }).map(() => ({
+                left: Math.random() * 100,
+                height: Math.random() * 20 + 35,
+                delay: Math.random() * 2,
+            })),
+        []
+    );
 
     const capabilitiesData = [
         {
@@ -45,7 +55,6 @@ function Capabilities() {
             label: "Version Control & Team Collaboration",
             description: `I use Git and GitHub for effective version control, code reviews, and branching strategies. I follow best practices for commits, pull requests, and collaborative workflows, ensuring smooth team coordination and continuous integration in multi-developer environments.`,
         }
-
     ];
 
     useGSAP(() => {
@@ -64,7 +73,6 @@ function Capabilities() {
                 opacity: 0,
                 y: 50,
                 stagger: 0.4,
-                duration: 1,
                 ease: "power2.out",
             });
         }, sectionRef);
@@ -72,29 +80,17 @@ function Capabilities() {
         return () => ctx.revert();
     }, []);
 
-    const commonOuterSx = {
-        borderBottom: `1px dotted ${theme.palette.primary.main}`,
-        p: 2,
-        minHeight: 140,
-        backdropFilter: "blur(14px)",
-        borderRadius: 1,
-        backgroundColor: "rgba(192, 194, 196, 0.1)",
-        boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
-    };
-
     const numberBoxSx = {
-        width: 40,
-        height: 40,
+        width: { xs: 32, md: 40 },
+        height: { xs: 32, md: 40 },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        borderTopRightRadius: "25%",
-        borderBottomRightRadius: "25%",
-        boxShadow: `inset 2px 2px 1px ${theme.palette.warning.main}`,
         color: theme.palette.text.main,
         letterSpacing: 2,
         backgroundColor: 'transparent',
-        border: `1px dotted ${theme.palette.primary.main}`,
+        boxShadow: `0 0 8px ${theme.palette.primary.main}20`,
+        borderRadius: 1,
     };
 
     return (
@@ -132,31 +128,110 @@ function Capabilities() {
                 {capabilitiesData.map((item, i) => (
                     <Stack
                         key={i}
-                        sx={commonOuterSx}
                         ref={(el) => (boxRefs.current[i] = el)}
+                        sx={{
+                            position: 'relative',
+                            overflow: 'hidden',
+                            borderRadius: 3,
+                            p: { xs: 2, md: 4 },
+                            minHeight: { xs: 140, md: 180 },
+                            width: 'auto',
+                            background: `
+                            linear-gradient(
+                                180deg,
+                                #0f172a 0%,
+                                #020617 100%
+                            )
+                            `,
+
+                            boxShadow: `
+                            inset 0 0 0 1px rgba(255,255,255,0.05),
+                            0 20px 40px rgba(0,0,0,0.6)
+                            `,
+                        }}
                     >
-                        <Box sx={numberBoxSx}>{item.number}</Box>
-                        <Typography
-                            variant="subtitle1"
-                            gutterBottom
-                            color="text.secondary"
-                            my={4}
-                            fontSize={"1.2rem"}
-                            fontWeight={600}
+
+                        {/* Rain Overlay */}
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                inset: 0,
+                                zIndex: 0,
+                                pointerEvents: 'none',
+                            }}
                         >
-                            {item.label}
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            gutterBottom
-                            color="text.secondary"
-                            textAlign={"justify"}
-                            lineHeight={1.8}
-                        >
-                            {item.description}
-                        </Typography>
+                            {rainDrops.map((drop, index) => (
+                                <Box
+                                    key={index}
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '-30%',
+                                        left: `${drop.left}%`,
+
+                                        /* diagonal drop body */
+                                        width: 2,
+                                        height: drop.height,
+
+                                        background: `
+                                        linear-gradient(
+                                            to bottom,
+                                            rgba(255,255,255,0) 0%,
+                                            rgba(255,255,255,0.85) 50%,
+                                            rgba(255,255,255,0) 100%
+                                        )
+                                        `,
+
+                                        borderRadius: 2,
+                                        transform: 'rotate(-25deg)',
+
+                                        filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.35))',
+
+                                        animation: 'diagonalRain 4s linear infinite',
+                                        animationDelay: `${drop.delay}s`,
+
+                                        '@keyframes diagonalRain': {
+                                            '0%': {
+                                                transform: 'translate(-140%, -140%) rotate(-25deg)',
+                                                opacity: 0,
+                                            },
+                                            '10%': {
+                                                opacity: 0.8,
+                                            },
+                                            '100%': {
+                                                transform: 'translate(240%, 240%) rotate(-25deg)',
+                                                opacity: 0,
+                                            },
+                                        },
+                                    }}
+                                />
+                            ))}
+                        </Box>
+
+                        {/* Content */}
+                        <Box sx={{ position: 'relative', zIndex: 1 }}>
+                            <Box sx={numberBoxSx}>{item.number}</Box>
+
+                            <Typography
+                                variant="subtitle1"
+                                my={3}
+                                fontSize="1.25rem"
+                                fontWeight={600}
+                                color="text.primary"
+                            >
+                                {item.label}
+                            </Typography>
+
+                            <Typography
+                                variant="body1"
+                                color="text.secondary"
+                                lineHeight={1.8}
+                            >
+                                {item.description}
+                            </Typography>
+                        </Box>
                     </Stack>
                 ))}
+
             </Box>
         </Box>
     );

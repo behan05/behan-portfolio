@@ -18,7 +18,10 @@ import {
   ContactsIcon,
   AttachFileIcon,
   FiberManualRecordIcon,
+  DarkModeIcon,
+  LightModeIcon
 } from "../../icons/icons";
+
 import { NavLink } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -33,7 +36,7 @@ gsap.registerPlugin(useGSAP);
 
 function Header() {
   const theme = useTheme();
-  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSm = useMediaQuery(theme.breakpoints.down("md"));
   const { toggleSidebar } = useSidebar();
   const pages = [
     { text: "Home", href: "/", icon: <HomeIcon /> },
@@ -101,164 +104,160 @@ function Header() {
 
   return (
     <AppBar
-      position='relative'
       elevation={0}
       sx={{
         backgroundColor: 'transparent',
         backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(10px)',
-        py: 1,
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        position: 'sticky',
+        top: 0,
+        zIndex: 10,
       }}
     >
-      <Toolbar sx={{ display: "flex", flexWrap: "wrap" }}>
+      <Toolbar
+        sx={{
+          minHeight: 72,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+
         <Stack
-          component="section"
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          flexWrap={'wrap'}
-          flexGrow={1}
+          sx={{ width: "100%" }}
         >
-          {/* Logo + Status */}
-          <Stack direction="row" alignItems="center" gap={0.2}>
+          {/* LEFT : Logo + Status */}
+          <Stack direction="row" alignItems="center" gap={1.5}>
             <Logo />
+
             <Stack
               direction="row"
-              gap={1}
+              gap={0.5}
               alignItems="center"
               component={NavLink}
-              to={'/contact'}
-              sx={{ textDecoration: 'none', color: 'inherit' }}
+              to="/contact"
+              sx={{ textDecoration: "none", color: "inherit" }}
             >
               <FiberManualRecordIcon
                 sx={{
-                  fontSize: '12px',
+                  fontSize: 10,
                   color: theme.palette.success.main,
-                  borderRadius: '50%',
-                  animation: 'pulseGlow 1.5s infinite',
-                  '@keyframes pulseGlow': {
-                    '0%': { filter: `drop-shadow(0 0 0px ${theme.palette.success.main})` },
-                    '50%': { filter: `drop-shadow(0 0 4px ${theme.palette.success.main})` },
-                    '100%': { filter: `drop-shadow(0 0 0px ${theme.palette.success.main})` },
+                  animation: "pulse 1.4s infinite",
+                  "@keyframes pulse": {
+                    "0%": { opacity: 0.4 },
+                    "50%": { opacity: 1 },
+                    "100%": { opacity: 0.4 },
                   },
                 }}
               />
-              <Typography variant="body2" role="status" color="text.primary">
-                Currently Available
+              <Typography variant="body2" fontWeight={500}>
+                Available
               </Typography>
             </Stack>
           </Stack>
 
-          {/* Nav List */}
+          {/* CENTER : Navigation */}
           {isSm ? (
-            <IconButton edge={'start'} onClick={toggleSidebar}>
-              <MenuOpenIcon color='text.primary' />
+            <IconButton onClick={toggleSidebar}>
+              <MenuOpenIcon />
             </IconButton>
           ) : (
-            <List
+            <Stack
               ref={navRef}
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                position: 'relative',
-                gap: 1
-              }}
+              direction="row"
+              alignItems="center"
+              spacing={1}
             >
               {pages.map((navItem, index) => (
-                <Tooltip
-                  key={index}
-                  title={navItem.icon}
-                  arrow
-                  placement="bottom"
-                  componentsProps={{
-                    tooltip: {
-                      sx: {
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        backdropFilter: 'blur(6px)',
-                        color: theme.palette.text.primary,
-                        fontSize: 13,
-                        px: 1.5,
-                        py: 1,
-                        border: `1px solid ${theme.palette.divider}`,
-                        borderRadius: 2,
-                        boxShadow: `0 0 8px rgba(0,0,0,0.1)`,
-                      },
-                    },
-                    arrow: {
-                      sx: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                      },
-                    },
-                  }}
-                >
-                  <Box
-                    component={NavLink}
-                    to={navItem.href}
-                    className="nav-link"
-                    sx={{
-                      px: 2.5,
-                      py: 1,
-                      borderRadius: 1,
-                      color: theme.palette.text.primary,
-                      textDecoration: 'none',
-                      fontWeight: 500,
-                      transition: 'all 0.3s ease',
-                      '&.active': {
-                        color: theme.palette.success.main,
-                        fontWeight: 600,
-                        borderTopLeftRadius: 0,
-                        boxShadow: `inset 0 0 4px ${theme.palette.text.secondary}`,
-                      },
-                      '&:hover': {
-                        backgroundColor: theme.palette.action.hover,
-                        transform: 'translateY(-1px)',
-                      },
-                    }}
-                  >
-                    <Typography variant="body2" textAlign="center" whiteSpace="nowrap">
-                      {navItem.text}
-                    </Typography>
-                  </Box>
-                </Tooltip>
-              ))}
-
-              {/* Resume Download Button */}
-              <Tooltip
-                title={<AttachFileIcon />}
-                arrow
-                placement="bottom"
-              >
                 <Box
-                  component="a"
-                  href="/Behan_Kumar_Resume.pdf"
-                  download
+                  key={index}
+                  component={NavLink}
+                  to={navItem.href}
                   className="nav-link"
                   sx={{
-                    px: 2.5,
-                    py: 1,
-                    borderRadius: 1,
-                    color: theme.palette.text.primary,
-                    textDecoration: 'none',
+                    px: 3,
+                    py: 1.5,
+                    position: "relative",
+                    textDecoration: "none",
+                    color: theme.palette.text.secondary,
                     fontWeight: 500,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      backgroundColor: theme.palette.action.hover,
-                      transform: 'translateY(-1px)',
+                    transition: "color 0.3s ease",
+
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: "50%",
+                      bottom: 4,
+                      width: 0,
+                      height: 2,
+                      backgroundColor: theme.palette.success.main,
+                      transform: "translateX(-50%)",
+                      transition: "width 0.3s ease",
+                    },
+
+                    "&:hover": {
+                      color: theme.palette.text.primary,
+                    },
+
+                    "&:hover::after": {
+                      width: "60%",
+                    },
+
+                    "&.active": {
+                      color: theme.palette.text.primary,
+                      fontWeight: 600,
+                    },
+
+                    "&.active::after": {
+                      width: "60%",
                     },
                   }}
                 >
-                  <Typography variant="body2" textAlign="center" whiteSpace="nowrap">
-                    Download Resume
+                  <Typography variant="body2" whiteSpace="nowrap">
+                    {navItem.text}
                   </Typography>
                 </Box>
-              </Tooltip>
-            </List>
+              ))}
+            </Stack>
+          )}
+
+          {/* RIGHT : Resume */}
+          {!isSm && (
+            <Tooltip title="Download Resume" arrow>
+              <Box
+                component="a"
+                href="/Behan_Kumar_Resume.pdf"
+                download
+                className="nav-link"
+                sx={{
+                  ml: 2,
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 1,
+                  border: `1px solid ${theme.palette.divider}`,
+                  textDecoration: "none",
+                  color: theme.palette.text.primary,
+                  fontWeight: 500,
+                  transition: "all 0.3s ease",
+
+                  "&:hover": {
+                    backgroundColor: theme.palette.action.hover,
+                    transform: "translateY(-1px)",
+                  },
+                }}
+              >
+                <Typography variant="body2">Resume</Typography>
+              </Box>
+            </Tooltip>
           )}
         </Stack>
       </Toolbar>
     </AppBar>
   );
+
 }
 
 export default Header;

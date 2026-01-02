@@ -1,9 +1,5 @@
-import React from 'react';
-
-import { Box, Stack, Grid, Chip, Paper, useMediaQuery, useTheme, Typography, Button } from "../mui/muiComponents";
+import { Box, Stack, Grid, useMediaQuery, useTheme, Typography, Button, IconButton } from "../mui/muiComponents";
 import { Link } from "react-router-dom";
-import RactangleFlower from "../components/ractangleFlower/RactangleFlower";
-import { MdEmail } from 'react-icons/md';
 import {
   FaReact,
   FaNodeJs,
@@ -14,8 +10,6 @@ import {
   FaJs,
   FaCloud,
   FaBolt, // used as GSAP icon
-  FaLinkedin,
-  FaGithub
 } from 'react-icons/fa';
 
 import {
@@ -25,9 +19,10 @@ import {
   SiSocketdotio,
   SiMui,
   SiDjango,
-  SiReactrouter
+  SiReactrouter,
+  SiNextdotjs
 } from 'react-icons/si';
-
+import { GitHub, LinkedIn, Email, Contacts, X } from '@mui/icons-material';
 
 // Animation
 import { } from "@gsap/react";
@@ -39,6 +34,7 @@ import behan from '../assets/images/behan.png'
 
 // component.
 import Capabilities from '../components/capabilities/Capabilities';
+import { Divider } from "@mui/material";
 
 
 const skills = [
@@ -59,6 +55,7 @@ const skills = [
   { label: "Django", icon: <SiDjango color="#092E20" /> },
   { label: "AWS", icon: <FaCloud color="#FF9900" /> },
   { label: "React Router", icon: <SiReactrouter color="#CA4245" /> },
+  { label: "Next.js", icon: <SiNextdotjs color="#000000" /> },
 ];
 
 function AboutPage() {
@@ -76,7 +73,31 @@ function AboutPage() {
         mx: 'auto',
         display: 'flex',
         flexDirection: 'column',
+        gap: { xs: 6, md: 15 },
+        px: { xs: 2, md: 4 },
       }}>
+
+      {/* Hero */}
+      <Box sx={{
+        py: 6,
+        textAlign: 'center',
+      }}>
+
+        <Typography variant={isSm ? 'h4' : 'h2'} color="text.primary" gutterBottom>
+          I Build Thoughtful, Scalable Web Experiences
+        </Typography>
+
+        <Typography
+          variant="subtitle1"
+          color="text.secondary"
+          sx={{ maxWidth: { xs: '100%', md: 720 }, mx: 'auto', lineHeight: 1.8 }}
+        >
+          Full-Stack Developer focused on modern React, clean backend architecture,
+          and real-time systems — building products that balance performance,
+          privacy, and user experience.
+        </Typography>
+
+      </Box>
 
       {/* == Short Introduction (Who You Are) == */}
       <Box
@@ -89,91 +110,93 @@ function AboutPage() {
           justifyContent: 'center',
         }}>
         {/* Profile Image */}
-        <Stack p={2} sx={{
-          backdropFilter: "blur(10px)",
-          backgroundColor: "rgba(192, 194, 196, 0.1)",
-          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
-          overflow: 'hidden',
-          border: `1px dotted ${theme.palette.primary.main}`,
-          borderRadius: 1,
-        }}>
-          <Stack
-            component={'img'}
+        <Stack
+          sx={{
+            overflow: 'hidden',
+            borderRadius: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Box
+            component="img"
             src={behan}
-            maxHeight={500}
-            maxWidth={400}
-            title='Image Converted by AI Tool.'
             sx={{
-              objectFit: 'cover',
-              borderRadius: 1,
-              boxShadow: `0 0 4px ${theme.palette.primary.main}`,
-              transition: `all 0.5s ease`,
-              "&:hover": {
-                transform: `scale(1.3) rotateZ(-5deg)`
-              }
+              width: { xs: 160, sm: 220, md: 320 },
+              height: { xs: 160, sm: 220, md: 320 },
+              objectFit: "cover",
+              borderRadius: '50%',
+              transition: "0.5s",
+              "&:hover": { transform: "scale(1.05)" }
             }}
           />
+
+          {/* Divider */}
+          <Divider sx={{
+            mt: 1,
+            mb: 1,
+          }}>
+            <Typography variant="subtitle1" color="text.secondary">
+              collaborating or hiring?
+            </Typography>
+          </Divider>
+          <Stack direction="row" spacing={1}>
+            {[
+              { icon: <GitHub />, href: 'https://github.com/behan05', external: true },
+              { icon: <LinkedIn />, href: 'https://www.linkedin.com/in/behan-kumar-25151b2ba/', external: true },
+              { icon: <X />, href: 'https://x.com/Behankumar05', external: true },
+              { icon: <Email />, href: 'mailto:behankrbth@outlook.com', external: true },
+              { icon: <Contacts />, to: '/contact', external: false },
+            ].map((item, i) => (
+              <IconButton
+                key={i}
+                component={item.external ? 'a' : Link}
+                href={item.external ? item.href : undefined}
+                to={!item.external ? item.to : undefined}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+                sx={{
+                  color: 'text.secondary',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: 'primary.main',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 0 12px rgba(0,229,255,0.35)',
+                  },
+                }}
+              >
+                {item.icon}
+              </IconButton>
+            ))}
+          </Stack>
         </Stack>
 
         {/* Intro */}
-        <Stack flex={1} spacing={3} textAlign={'justify'}>
-          <Typography
-            variant="h4"
-            color="text.primary"
-            gutterBottom
-          >
-            Hi, I'm Behan 👋
+        <Stack flex={1} spacing={3} textAlign={'justify'} sx={{ px: { xs: 0, md: 2 } }}>
+          <Typography variant="h4">Behan Kumar</Typography>
+
+          <Typography color="primary.main" fontWeight={600}>
+            Full-Stack Engineer • MERN • Real-Time Applications
           </Typography>
 
-          <Typography variant="body1" color="text.secondary">
-            I build web apps with code — and a bit of heart. 💙 I’m also the <strong>open-source maintainer of Pairly.chat</strong>, a real-time chat platform that prioritizes user privacy and security.
+          <Typography color="text.secondary">
+            I design and build modern web applications with a strong focus on
+            scalability, maintainability, and user experience.
           </Typography>
 
-          <Typography variant="body1" color="text.secondary">
-            From smooth interfaces to smart backends, I turn ideas into experiences people enjoy using.
+          <Typography color="text.secondary">
+            I’m the creator of <strong>Pairly.chat</strong>, a real-time communication
+            platform built with privacy, safety, and meaningful interactions in mind.
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" gutterBottom>
-            I’m not here just to code. I’m here to create, connect, and contribute something that matters.
-          </Typography>
-          <Typography
-            color="text.secondary"
-            component={'a'}
-            href={'https://dev.to/behan05/my-journey-as-a-full-stack-developer-520l'}
-            target="_blank"
-            sx={{
-              fontStyle: 'italic',
-              fontWeight: 700
-            }}
-          >
-            Read my short article about my journey as a Full-Stack Developer →
-          </Typography>
-
-          <Button
-            component={Link}
-            to={'/contact'}
-            variant="outlined"
-            sx={{
-              width: 'fit-content',
-              color: "text.primary",
-              bgcolor: 'transparent',
-            }}
-          >
-            Let’s Connect
-          </Button>
         </Stack>
       </Box>
-
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
 
       {/* == Tech Stack / Skills (What You Use) == */}
       <Box>
         <Stack maxWidth={800}>
           <Typography
-            variant="h4"
+            variant={isSm ? "h4" : "h3"}
             color="text.primary"
             gutterBottom
           >
@@ -193,7 +216,8 @@ function AboutPage() {
                   color: 'text.primary',
                   border: '1px solid rgba(255,255,255,0.1)',
                   borderRadius: '12px',
-                  padding: '10px 16px',
+                  py: 1,
+                  px: 2,
                   fontSize: '0.95rem',
                   fontWeight: 500,
                   textAlign: 'center',
@@ -218,242 +242,81 @@ function AboutPage() {
 
       </Box>
 
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
+      {/* == Value == */}
+      <Box>
+        <Typography variant="h3" gutterBottom>
+          Engineering Values
+        </Typography>
+
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+            gap: 4,
+            mt: 2,
+          }}
+        >
+          {[
+            'Clean, maintainable, and scalable codebases',
+            'Security-first mindset and privacy-aware systems',
+            'Clear communication and team collaboration',
+            'Continuous learning and engineering discipline',
+          ].map((text, i) => (
+            <Typography key={i} color="text.secondary" lineHeight={1.8}>
+              {text}
+            </Typography>
+          ))}
+        </Box>
+
+      </Box>
 
       {/* == My Journey / Experience (My Story) == */}
       <Box>
-        <Stack maxWidth={800}>
-          <Typography
-            variant='h4'
-            color='text.primary'
-            gutterBottom
-            id="journey"
-          >
-            My Journey
-          </Typography>
-
-          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-            Everyone has a story — here’s mine, built with trial, error, passion, and lots of late-night debugging.
-          </Typography>
-
-        </Stack>
-
-        <Stack
-          alignItems="flex-start"
-          spacing={2}
-          sx={{
-            bgcolor: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(255,255,255,0.06)',
-            p: { xs: 3, sm: 4 },
-            backdropFilter: 'blur(14px)',
-            boxShadow: '0 0 20px rgba(0,0,0,0.1)',
-            borderBottom: `1px dotted ${theme.palette.primary.main}`,
-          }}
-        >
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            My development journey has been fueled by curiosity, consistency, and the desire to turn ideas into impactful digital experiences.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            I’ve built a strong foundation in the MERN stack — MongoDB, Express.js, React, and Node.js — and expanded my toolkit with technologies like Redux Toolkit, GSAP, Socket.IO, MUI, and custom APIs. Tools like Git, GitHub, Postman, Vite, and Render support my workflow and deployment.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            Along the way, I’ve tackled challenges like mastering backend architecture, improving communication in English, and understanding complex concepts like middleware, async behavior, and WebSocket events. Each challenge has helped me grow sharper and more capable.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            One of my recent builds is a DevTool that tracks and logs API performance in real time — designed to support debugging and improve developer efficiency. I’m also exploring advanced topics in React performance, user experience, and secure backend flows.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            I’m currently enhancing <strong>Pairly.chat</strong> with a <strong>private chat feature</strong>.<br />
-            For now, the project supports <strong>text-based chat only</strong>.<br />
-            In the next version, <strong>video chat will be available in Couple Mode only</strong> — not in random or private chats — to ensure user security and privacy.<br />
-            The platform is designed to protect users from interacting with the wrong person, and only once both users opt into Couple Mode can they access video/audio chat.<br />
-            Additional features are planned to enhance safety, privacy, and overall user experience.<br />
-            You can check the project on <a href="https://github.com/behan05/pairly" target="_blank" rel="noopener noreferrer">GitHub</a>.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            I’m excited to join a team where I can contribute, learn, and build production-grade systems that actually make a difference. If you're building something meaningful — I’d love to be part of it.
-          </Typography>
-
-        </Stack>
-
-      </Box>
-
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
-
-      {/* == What i am Good At / Capabilities == */}
-      <Box>
-        <Capabilities />
-      </Box>
-
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
-
-      {/* == What You’re Looking For == */}
-      <Box mb={8}>
-        <Stack maxWidth={800}>
-          <Typography
-            variant="h4"
-            color="text.primary"
-            gutterBottom
-          >
-            What I'm Looking For
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-            I'm seeking exciting opportunities where I can contribute, grow, and build meaningful digital products with purpose-driven teams 🚀
-          </Typography>
-        </Stack>
+        <Typography variant="h3" gutterBottom>
+          Professional Journey
+        </Typography>
 
         <Stack
           spacing={2}
-          alignItems="flex-start"
           sx={{
-            bgcolor: 'rgba(255,255,255,0.02)',
-            p: { xs: 3, sm: 4 },
-            backdropFilter: 'blur(14px)',
-            boxShadow: '0 0 20px rgba(0,0,0,0.1)',
-            borderBottom: `1px dotted ${theme.palette.primary.main}`
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: 2,
+            p: { xs: 3, md: 4 },
           }}
         >
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            💼 I’m actively looking for opportunities to help build modern, scalable web applications — whether it’s a full-time role, internship, or freelance project.
+          <Typography color="text.secondary">
+            My journey began with frontend development and expanded into full-stack
+            engineering as I designed APIs, real-time systems, and deployment pipelines.
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            🛠️ I enjoy working with technologies like React, Node.js, MongoDB, WebSockets, and GSAP — but I’m also excited to explore new stacks and tools that push my growth.
+          <Typography color="text.secondary">
+            I work extensively with the MERN stack, Socket.IO, Redux Toolkit, GSAP,
+            and modern tooling like Git, Vite, Postman, and cloud deployments.
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            🤝 I value teams that believe in clean code, creative problem-solving, and continuous learning. I’m eager to collaborate, contribute, and build products that truly help people.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            ✨ If you're working on something impactful and need a developer with passion, curiosity, and commitment — I’d love to join your journey.
+          <Typography color="text.secondary">
+            Currently, I’m enhancing <strong>Pairly.chat</strong> with advanced,
+            privacy-first real-time communication features.
           </Typography>
         </Stack>
       </Box>
 
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack my={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
-
-      {/* == Personal Touch  == */}
+      {/* What i am looking for */}
       <Box>
+        <Typography variant="h3" gutterBottom>
+          What I’m Looking For
+        </Typography>
+
         <Stack spacing={2} maxWidth={800}>
-          <Typography
-            variant="h4"
-            color="text.primary"
-            gutterBottom
-          >
-            The Human Behind the Developer
+          <Typography color="text.secondary">
+            • Full-time, internship, or contract roles in product-focused teams
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-            When I’m not building apps, I’m fueling curiosity, chasing ideas, and enjoying the simple things that inspire better code — and a better life.
+          <Typography color="text.secondary">
+            • Environments that value clean architecture and collaboration
           </Typography>
-        </Stack>
-        <Stack
-          spacing={2}
-          alignItems="flex-start"
-          sx={{
-            bgcolor: 'rgba(255,255,255,0.02)',
-            p: { xs: 3, sm: 4 },
-            backdropFilter: 'blur(8px)',
-            boxShadow: '0 0 20px rgba(0,0,0,0.1)',
-            borderBottom: `1px dotted ${theme.palette.primary.main}`
-          }}
-        >
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            🌱 Outside of development, I spend time learning about design systems, watching tech documentaries, and reflecting on how technology shapes human lives. I believe creativity and empathy go hand in hand with engineering.
+          <Typography color="text.secondary">
+            • Teams building meaningful, scalable digital products
           </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            🎧 I recharge by listening to music, sketching ideas in notebooks, or reading about startups and digital innovation. These habits help me come back to code with fresh energy and new perspectives.
-          </Typography>
-
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            🤝 Whether it's mentoring beginners, collaborating with teammates, or just sharing ideas — I find joy in growing *together*. At the core, I’m a builder who loves learning, not just coding.
-          </Typography>
-        </Stack>
-      </Box>
-
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack mt={5} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
-
-      {/* == Call-to-Action == */}
-      <Box sx={{ mt: 8 }}>
-        <Stack
-          spacing={3}
-          alignItems="center"
-          textAlign="center"
-          sx={{
-            bgcolor: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(255,255,255,0.06)',
-            p: { xs: 4, sm: 6 },
-            borderBottom: `1px dotted ${theme.palette.primary.main}`,
-            backdropFilter: 'blur(14px)',
-            boxShadow: '0 0 30px rgba(0,0,0,0.1)'
-          }}
-        >
-          <Typography
-            variant="h4"
-            color="text.primary"
-            gutterBottom
-          >
-            Let’s Build Something Great Together 🚀
-          </Typography>
-
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            sx={{ maxWidth: 600, lineHeight: 1.8 }}
-          >
-            Whether you’re hiring, collaborating, or just curious about my work — I’m always open to meaningful conversations. Let’s connect and explore how we can work together!
-          </Typography>
-
-          <Button
-            variant="contained"
-            size="large"
-            component={Link}
-            to={"/contact"}
-            sx={{
-              color: 'white',
-              textTransform: 'none',
-              fontWeight: 'bold',
-              px: 4,
-              py: 1.5,
-              mt: 1
-            }}
-            startIcon={<MdEmail />}
-          >
-            Get in Touch
-          </Button>
-
-          <Stack direction="row" spacing={3} mt={2}>
-            <a href="mailto:behankrbth@outlook.com" target="_blank" rel="noopener noreferrer">
-              <MdEmail size={28} color="#ddd" style={{ cursor: 'pointer' }} />
-            </a>
-            <a href="https://github.com/behan05" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={28} color="#ddd" style={{ cursor: 'pointer' }} />
-            </a>
-            <a href="https://www.linkedin.com/in/behan-kumar-b73660351/" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin size={28} color="#0077b5" style={{ cursor: 'pointer' }} />
-            </a>
-          </Stack>
         </Stack>
       </Box>
     </Box>

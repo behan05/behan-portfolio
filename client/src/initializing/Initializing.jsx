@@ -11,7 +11,7 @@ function InitializingScreen({ onComplete }) {
                 duration: 0.5,
                 onComplete,
             });
-        }, 2000); // 2.5 sec delay for effect
+        }, 1000); // 2.5 sec delay for effect
 
         return () => clearTimeout(timer);
     }, [onComplete]);
@@ -23,24 +23,50 @@ function InitializingScreen({ onComplete }) {
                 position: 'fixed',
                 inset: 0,
                 zIndex: 9999,
-                backgroundColor: '#text.secondary',
+                bgcolor: 'background.default',
                 color: 'text.primary',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
+                gap: 2,
+                px: 2,
+                textAlign: 'center',
                 fontFamily: 'monospace',
             }}
         >
-            <Typography textAlign={'center'} variant="h6" sx={{ mb: 2, letterSpacing: 2 }}>
-                INITIALIZING...
+            <Typography
+                variant="overline"
+                sx={{
+                    letterSpacing: 3,
+                    opacity: 0.7,
+                }}
+            >
+                Initializing
             </Typography>
-            <Typography textAlign={'center'} variant="h6" sx={{ mb: 2, letterSpacing: 2 }}>
-                Till then please increase your screen brightness for a better experience.
+
+            <Typography
+                variant="h6"
+                sx={{
+                    maxWidth: 480,
+                    lineHeight: 1.6,
+                    opacity: 0.85,
+                }}
+            >
+                Please increase your screen brightness for a better visual experience.
             </Typography>
-            <CircularProgress size={32} sx={{ color: 'wranning.main' }} />
+
+            <CircularProgress
+                size={36}
+                thickness={4}
+                sx={{
+                    mt: 1,
+                    color: 'warning.main',
+                }}
+            />
         </Box>
     );
+
 }
 
 export default InitializingScreen;

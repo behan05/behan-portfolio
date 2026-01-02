@@ -23,7 +23,7 @@ function RactangleFlower() {
                 ease: 'linear',
                 transformOrigin: 'center center',
             });
-        }, 2000);
+        }, 2500);
 
         return () => clearInterval(ractangleTimer);
     }, []);
@@ -40,7 +40,7 @@ function RactangleFlower() {
                 component="img"
                 src={ractangle}
                 alt="rectangle"
-                width={isSm ? 50 : 80}
+                width={isSm ? 50 : 60}
                 sx={{
                     userSelect: 'none',
                 }}

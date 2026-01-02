@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Box, Typography, Button, Stack, Link, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, Button, Stack, Link, useTheme } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import gsap from 'gsap';
 import CarouselCard from './CarouselCard';
+import CustomButton from '../button/CustomButton';
 
 const items = [
     {
@@ -25,25 +26,37 @@ const items = [
     {
         id: 3,
         title: 'Pairly Chat',
-        description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB, this open-source project focuses on protecting users while providing a smooth chat experience.`,
+        description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB.`,
         link: `https://pairly.chat`,
         sourceCode: ``,
         image: '/projectImages/chat600px.png'
     },
     {
         id: 4,
-        title: 'Typing Speed Tester',
-        description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
-        link: ``,
-        sourceCode: ``,
-        image: '/projectImages/comingSoon.png'
+        title: 'Production Grade Dashboard',
+        description: `An enterprise-ready dashboard template built with React and Material UI, featuring scalable architecture, responsive design, and data-driven UI components.`,
+        link: `#`,
+        sourceCode: `#`,
+        image: '/projectImages/productionDashboard600px.png'
+    },
+    {
+        id: 5,
+        title: 'NewsNest (News App)',
+        description: `A Next.js news application created to explore the App Router, URL-based state management, and live API integration with a clean reading experience.`,
+        link: `#`,
+        sourceCode: `https://github.com/behan05/news-app`,
+        image: '/projectImages/newsapp600px.png'
     },
 ];
 
 const Carousel3D = () => {
+    const theme = useTheme();
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(2);
-
+    const isSm = useTheme().breakpoints.down('sm');
+    const isMd = useTheme().breakpoints.down('md');
+    const isLg = useTheme().breakpoints.down('lg');
+    
     const rotateCarousel = (direction) => {
         const newIndex = (currentIndex + direction + items.length) % items.length;
         setCurrentIndex(newIndex);
@@ -98,26 +111,50 @@ const Carousel3D = () => {
                     }}
                 >
                     {/* Prev Button */}
-                    <Button
+                    <CustomButton
                         onClick={() => rotateCarousel(-1)}
                         variant="outlined"
                         sx={{
-                            bgcolor: 'transparent',
-                            minWidth: '80px',
+                            py: 0.6,
+                            px: 2.5,
+                            borderRadius: 999,
+                            fontSize: '0.85rem',
+                            letterSpacing: 1,
+                            textTransform: 'uppercase',
+
+                            color: theme.palette.text.primary,
+                            background: 'rgba(255,255,255,0.06)',
+                            backdropFilter: 'blur(8px)',
+                            WebkitBackdropFilter: 'blur(8px)',
+
+                            border: `1px solid ${theme.palette.primary.main}`,
+                            boxShadow: '0 0 10px rgba(0,229,255,0.15)',
                             zIndex: 2,
-                            color: 'text.primary',
+
+                            transition: 'all 0.3s ease',
+
+                            '&:hover': {
+                                background: 'rgba(0,229,255,0.15)',
+                                boxShadow: '0 0 18px rgba(0,229,255,0.35)',
+                                transform: 'translateY(-2px)',
+                            },
+
+                            '&:active': {
+                                transform: 'translateY(0)',
+                                boxShadow: '0 0 8px rgba(0,229,255,0.25)',
+                            },
                         }}
                     >
                         Prev
-                    </Button>
+                    </CustomButton>
 
                     {/* Carousel */}
                     <Box
                         ref={containerRef}
                         sx={{
                             position: 'relative',
-                            width: { xs: '100%', sm: '600px', md: '900px' },
-                            height: { xs: '300px', sm: '380px', md: '500px' },
+                            width: { xs: '300px', md: '400px', lg: '500px' },
+                            height: { xs: '300px', md: '350px', lg: '400px' },
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -132,18 +169,43 @@ const Carousel3D = () => {
                     </Box>
 
                     {/* Next Button */}
-                    <Button
+                    <CustomButton
                         onClick={() => rotateCarousel(1)}
                         variant="outlined"
                         sx={{
-                            color: 'text.primary',
-                            bgcolor: 'transparent',
-                            minWidth: '80px',
+                            py: 0.6,
+                            px: 2.5,
+                            borderRadius: 999,
+                            fontSize: '0.85rem',
+                            letterSpacing: 1,
+                            textTransform: 'uppercase',
+
+                            color: theme.palette.text.primary,
+                            background: 'rgba(255,255,255,0.06)',
+                            backdropFilter: 'blur(8px)',
+                            WebkitBackdropFilter: 'blur(8px)',
+
+                            border: `1px solid ${theme.palette.primary.main}`,
+                            boxShadow: '0 0 10px rgba(0,229,255,0.15)',
                             zIndex: 2,
+
+                            transition: 'all 0.3s ease',
+
+                            '&:hover': {
+                                background: 'rgba(0,229,255,0.15)',
+                                boxShadow: '0 0 18px rgba(0,229,255,0.35)',
+                                transform: 'translateY(-2px)',
+                            },
+
+                            '&:active': {
+                                transform: 'translateY(0)',
+                                boxShadow: '0 0 8px rgba(0,229,255,0.25)',
+                            },
                         }}
+
                     >
                         Next
-                    </Button>
+                    </CustomButton>
                 </Box>
 
 
@@ -163,7 +225,7 @@ const Carousel3D = () => {
                         flexWrap="wrap"
                         my={4}
                     >
-                        <Button
+                        <CustomButton
                             component={Link}
                             href={current.link}
                             target="_blank"
@@ -176,9 +238,9 @@ const Carousel3D = () => {
                             }}
                         >
                             Visit Site
-                        </Button>
+                        </CustomButton>
 
-                        <Button
+                        <CustomButton
                             component={Link}
                             href={current.sourceCode}
                             target="_blank"
@@ -190,7 +252,7 @@ const Carousel3D = () => {
                             }}
                         >
                             Source Code
-                        </Button>
+                        </CustomButton>
                     </Stack>
                 </Box>
             </Box>

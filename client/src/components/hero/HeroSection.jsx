@@ -103,6 +103,11 @@ function HeroSection() {
         if (!btnRef2.current) return;
         subtitleRef.current.textContent = ' ';
 
+        gsap.set([btnRef1.current, btnRef2.current], {
+            opacity: 0,
+            y: 40,
+        });
+
         const tl = gsap.timeline();
 
         // Wrap each word in a span
@@ -128,29 +133,27 @@ function HeroSection() {
         // Animate all span children of the paragraph
         tl.to(subtitleRef.current.children, {
             opacity: 1,
-            y: 20,
-            stagger: 0.1,
-            duration: 0.3,
+            y: 0,
+            stagger: 0.06,
+            duration: 0.35,
             ease: 'power2.out',
         });
 
         // CTA Button Animation.
-
-        tl.from(btnRef1.current, {
-            opacity: 0,
-            y: 40
-        })
-        tl.from(btnRef2.current, {
-            opacity: 0,
-            y: 40
-        })
+        tl.to([btnRef1.current, btnRef2.current], {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.5,
+            ease: 'power3.out',
+        });
 
     }, []);
 
     return (
         <Box sx={{
             display: 'flex',
-            gap: 8,
+            gap: { xs: 4, md: 8 },
             flexDirection: (isSm || isMd) ? 'column' : 'row '
         }}>
             {/* Left Box */}
@@ -168,12 +171,12 @@ function HeroSection() {
                     ref={headingRef}
                     variant='h1'
                     fontFamily={'"Lora", serif'}
-                    fontSize={isSm ? '1.9rem' : isLg ? '2.2rem' : '3rem'}
+                    fontSize={{ xs: '1.6rem', sm: '1.9rem', md: '2.2rem', lg: '3rem' }}
                     textAlign={isSm && 'center'}
                     fontWeight={600}
-                    letterSpacing={'0.256348px'}
-                    lineHeight={'64.2819px'}
-                    pb={'25.6348px'}
+                    letterSpacing={'0.02em'}
+                    lineHeight={{ xs: 1.2, md: 1.05 }}
+                    pb={{ xs: 2, md: 4 }}
                     sx={{
                         tabSize: 4,
                         textSizeAdjust: '100%',
@@ -184,11 +187,11 @@ function HeroSection() {
                         variant='h1'
                         gutterBottom
                         fontFamily={'"Lora", serif'}
-                        fontSize={isSm ? '1.9rem' : isLg ? '2.2rem' : '3rem'}
+                        fontSize={{ xs: '1.6rem', sm: '1.9rem', md: '2.2rem', lg: '3rem' }}
                         fontWeight={600}
-                        letterSpacing={'0.256348px'}
-                        lineHeight={'64.2819px'}
-                        pb={'25.6348px'}
+                        letterSpacing={'0.02em'}
+                        lineHeight={{ xs: 1.2, md: 1.05 }}
+                        pb={{ xs: 2, md: 4 }}
                         sx={{
                             tabSize: 4,
                             textSizeAdjust: '100%',
@@ -206,12 +209,10 @@ function HeroSection() {
                     lineHeight={1.8}
                     ref={subtitleRef}
                     textAlign={'justify'}
-                /
-                >
-
+                />
                 {/* Button */}
                 <Stack
-                    mt={8}
+                    mt={{ xs: 3, md: 8 }}
                     justifyContent={isSm ? 'center' : 'flex-start'}
                     direction={'row'}
                     flexWrap={'wrap'}
@@ -222,15 +223,9 @@ function HeroSection() {
                     <CustomButton
                         ref={btnRef1}
                         startIcon={<WorkOutlineIcon />}
-                        variant="outlined"
                         component={Link}
                         to={'/contact'}
                         color='text.primary'
-                        sx={{
-                            backgroundColor: 'transparent',
-                            border: `1px dotted ${theme.palette.primary.main}`,
-                            boxShadow: `inset 0 0 4px ${theme.palette.primary.main}`,
-                        }}
                     >
                         Hire Me
                     </CustomButton>
@@ -238,21 +233,14 @@ function HeroSection() {
                     <CustomButton
                         ref={btnRef2}
                         startIcon={<VisibilityIcon />}
-                        variant="outlined"
                         component={Link}
                         to={'/projects'}
                         color='text.primary'
-                        sx={{
-                            backgroundColor: 'transparent',
-                            border: `1px dotted ${theme.palette.primary.main}`,
-                            boxShadow: `inset 0 0 4px ${theme.palette.primary.main}`,
-                        }}
                     >
                         View My Work
                     </CustomButton>
 
                 </Stack>
-
             </Box>
 
             {/* Right Box */}
@@ -264,19 +252,19 @@ function HeroSection() {
                     order: isMd ? 0 : 1,
                     userSelect: 'none',
                 }}>
-                <Stack
+                <Box
                     ref={iconRef}
                     component={'img'}
                     src={currentIcon}
                     alt='tech-icon'
                     aria-label='tech-icon'
-                    maxHeight={200}
-                    maxWidth={200}
                     sx={{
+                        maxHeight: { xs: 100, md: 200 },
+                        maxWidth: { xs: 100, md: 200 },
                         background: theme.palette.text.primary,
                         borderRadius: 2,
                         filter: 'brightness(80)',
-                        p: 3,
+                        p: { xs: 1, md: 3 },
                     }}
                 />
             </Box>

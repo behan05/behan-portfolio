@@ -17,7 +17,7 @@ const PageNotFound = () => {
     return (
 
         <Container
-            maxWidth="sm"
+            maxWidth={false}
             sx={{
                 minWidth: '100%',
                 minHeight: '100vh',

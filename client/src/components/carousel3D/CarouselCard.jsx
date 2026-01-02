@@ -7,8 +7,8 @@ const CarouselCard = ({ item }) => {
             component={Link}
             to={item.link}
             sx={{
-                width: '280px',
-                height: '400px',
+                width: { xs: '200px', sm: '240px', md: '280px' },
+                height: { xs: '280px', sm: '340px', md: '400px' },
                 borderRadius: '16px',
                 overflow: 'hidden',
                 position: 'absolute',

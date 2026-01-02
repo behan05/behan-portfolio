@@ -1,5 +1,4 @@
-// ProjectsPage.jsx
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import {
   Box,
   Typography,
@@ -24,7 +23,7 @@ const cardItems = [
   {
     id: 1,
     title: 'Pairly Chat',
-    description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB, this open-source project focuses on protecting users while providing a smooth chat experience.`,
+    description: `A real-time full-stack chat application focused on privacy and security. Supports secure private messaging with future plans for couple-only video chat. Built using React, Node.js, Express, Socket.IO, and MongoDB.`,
     link: `https://pairly.chat`,
     sourceCode: `https://github.com/behan05/pairly`,
     image: '/projectImages/chatBigImg.png'
@@ -32,7 +31,7 @@ const cardItems = [
   {
     id: 2,
     title: 'Admin Dashboard',
-    description: `A modern and responsive Admin Dashboard built with React and Material UI (MUI v5). Features a customizable AppBar, Sidebar, and reusable components.`,
+    description: `A modern and responsive admin dashboard built with React and Material UI (MUI v5), featuring a customizable layout, sidebar navigation, and reusable UI components.`,
     link: `https://react-admin-panel-behan.vercel.app/`,
     sourceCode: `https://github.com/behan05/material-ui-admin-dashboard`,
     image: '/projectImages/adminBigImg.png'
@@ -40,18 +39,26 @@ const cardItems = [
   {
     id: 3,
     title: 'Brandora Digital Solutions',
-    description: `A responsive and modern digital agency website built using React and Material UI, showcasing services, portfolio, and a call-to-action for clients and businesses.`,
+    description: `A modern digital agency website built with React and Material UI, designed to showcase services, portfolio, and client-focused call-to-actions.`,
     link: `https://brandora-agency.vercel.app`,
     sourceCode: `https://github.com/behan05/brandora-digital-solutions`,
     image: '/projectImages/brandoraBigImg.png'
   },
   {
     id: 4,
-    title: 'Typing Speed Tester',
-    description: `A full-stack typing speed tester app with real-time performance tracking, accuracy analysis, and leaderboard support, built using React, Node.js, Express, and MongoDB.`,
+    title: 'Production Grade Dashboard',
+    description: `An enterprise-ready dashboard template built with React and Material UI, featuring scalable architecture, responsive design, and data-driven UI components.`,
     link: `#`,
-    sourceCode: `https://github.com/behan05/typing-speed-tester`,
-    image: '/projectImages/comingSoon.png'
+    sourceCode: `#`,
+    image: '/projectImages/productionDashboardBig.png'
+  },
+  {
+    id: 5,
+    title: 'NewsNest (News App)',
+    description: `A Next.js news application created to explore the App Router, URL-based state management, and live API integration with a clean reading experience.`,
+    link: `#`,
+    sourceCode: `https://github.com/behan05/news-app`,
+    image: '/projectImages/newsappBigImg.png'
   },
 ];
 
@@ -59,6 +66,7 @@ function ProjectsPage() {
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
   const isMd = useMediaQuery(theme.breakpoints.down('md'));
+  const isLg = useMediaQuery(theme.breakpoints.down('lg'));
 
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
@@ -128,7 +136,7 @@ function ProjectsPage() {
       flexDirection: 'column',
       gap: 6,
       px: isSm ? 0 : 2,
-      overflow: 'hidden'
+      overflow: 'hidden',
     }}>
       <Box component="section" textAlign="center">
         <Typography
@@ -154,8 +162,8 @@ function ProjectsPage() {
         component="section"
         sx={{
           display: 'grid',
-          gridTemplateColumns: (isSm || isMd) ? '1fr' : 'repeat(2, 1fr)',
-          gap: 3,
+          gridTemplateColumns: isSm  ? '1fr' : (isMd || isLg) ? 'repeat(2, 0.8fr)' : 'repeat(3, 1fr)',
+          gap: 2,
         }}
       >
         {cardItems.map((item) => (

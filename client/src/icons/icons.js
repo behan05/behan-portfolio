@@ -16,5 +16,5 @@ export { default as AttachFileIcon } from '@mui/icons-material/AttachFile';
 export { default as FiberManualRecordIcon } from '@mui/icons-material/FiberManualRecord';
 export { default as WorkOutlineIcon } from '@mui/icons-material/WorkOutline';
 export { default as VisibilityIcon } from '@mui/icons-material/Visibility';
-
-
+export { default as DarkModeIcon } from '@mui/icons-material/DarkMode';
+export { default as LightModeIcon } from '@mui/icons-material/LightMode';

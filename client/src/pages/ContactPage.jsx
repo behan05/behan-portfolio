@@ -1,11 +1,12 @@
 import React from 'react'
 import Contact from '../components/contact/Contact';
+import { Box } from '../mui/muiComponents';
 
 function ContactPage() {
     return (
-        <div>
+        <Box sx={{ px: { xs: 2, sm: 4 } }}>
             <Contact />
-        </div>
+        </Box>
     )
 }
 

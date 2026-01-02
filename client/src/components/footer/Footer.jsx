@@ -1,7 +1,6 @@
-// Footer.js
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Stack, IconButton, Link } from '@mui/material';
-import { GitHub, LinkedIn, Email } from '@mui/icons-material';
+import { Box, Typography, Stack, IconButton, Link, Divider } from '@mui/material';
+import { GitHub, LinkedIn, Email, Forum, X } from '@mui/icons-material';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,7 +22,7 @@ const Footer = () => {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: footer,
-          start: 'top 80%',
+          start: 'top 85%',
         },
       }
     );
@@ -34,50 +33,84 @@ const Footer = () => {
       ref={footerRef}
       component="footer"
       sx={{
-        mt: 10,
-        py: 6,
-        backdropFilter: "blur(10px)",
-        backgroundColor: "rgba(192, 194, 196, 0.1)",
-        boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
-        color: 'text.secondary',
-        textAlign: 'center',
+        mt: 12,
+        py: 8,
+        px: 2,
+        borderRadius: { lg: 2, md: 2, sm: 0, xs: 0 },
+        background: `
+        linear-gradient(
+        180deg,
+        #0f172a 0%,
+        #020617 100%
+        )`,
+
+        boxShadow: `
+        inset 0 0 0 1px rgba(255,255,255,0.05),
+        0 20px 40px rgba(0,0,0,0.6)`,
         borderTop: '1px solid',
         borderColor: 'divider',
+        color: 'text.secondary',
+        textAlign: 'center',
       }}
     >
-      <Stack spacing={2} alignItems="center">
-        <Typography variant="h6" color="text.primary">
-          Behan • Full Stack Developer
+      <Stack spacing={3} alignItems="center" maxWidth={900} mx="auto">
+
+        <Typography variant="h6" color="text.primary" letterSpacing={1}>
+          Behan • Full Stack Engineer
         </Typography>
+
+        <Typography
+          variant="body2"
+          sx={{
+            maxWidth: 600,
+            fontStyle: 'italic',
+            opacity: 0.85,
+            lineHeight: 1.8,
+          }}
+        >
+          “Great software is not built by chance — it’s crafted with clarity,
+          consistency, and care.”
+        </Typography>
+
+        <Divider
+          sx={{
+            width: 80,
+            borderColor: 'primary.main',
+            opacity: 0.4,
+          }}
+        />
+
         <Stack direction="row" spacing={2}>
-          <IconButton
-            component={Link}
-            href="https://github.com/behan05"
-            target="_blank"
-            rel="noopener"
-            color="inherit"
-          >
-            <GitHub />
-          </IconButton>
-          <IconButton
-            component={Link}
-            href="https://www.linkedin.com/in/behan-kumar-25151b2ba/"
-            target="_blank"
-            rel="noopener"
-            color="inherit"
-          >
-            <LinkedIn />
-          </IconButton>
-          <IconButton
-            component={Link}
-            href="mailto:behankrbth@outlook.com"
-            color="inherit"
-          >
-            <Email />
-          </IconButton>
+          {[
+            { icon: <GitHub />, link: 'https://github.com/behan05' },
+            { icon: <LinkedIn />, link: 'https://www.linkedin.com/in/behan-kumar-25151b2ba/' },
+            { icon: <Forum />, link: 'https://dev.to/behan05' },
+            { icon: <X />, link: 'https://x.com/Behankumar05' },
+            { icon: <Email />, link: 'mailto:behankrbth@outlook.com' },
+          ].map((item, i) => (
+            <IconButton
+              key={i}
+              component={Link}
+              href={item.link}
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: 'text.secondary',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  color: 'primary.main',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 0 12px rgba(0,229,255,0.35)',
+                },
+              }}
+            >
+              {item.icon}
+            </IconButton>
+          ))}
         </Stack>
-        <Typography variant="body2" color="text.secondary">
-          &copy; {new Date().getFullYear()} Behan. All rights reserved.
+
+        <Typography variant="body2" sx={{ opacity: 0.6 }}>
+          © {new Date().getFullYear()} Behan. All rights reserved.
         </Typography>
       </Stack>
     </Box>

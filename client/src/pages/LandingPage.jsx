@@ -9,7 +9,7 @@ import Contact from "../components/contact/Contact";
 function LandingPage() {
 
   return (
-    <Box>
+    <Box sx={{ px: { xs: 2, md: 4 }, overflow: 'hidden' }}>
 
       {/* === Hero Section with Animated Text and Technology Icons === */}
       <HeroSection />

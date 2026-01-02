@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import {
   Box,
   Typography,
   Stack,
-  Button,
   useTheme,
 } from '../mui/muiComponents';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import CustomButton from '../components/button/CustomButton';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,15 +39,20 @@ function ProjectCards({ item }) {
     <Box
       ref={cardRef}
       sx={{
-        p: 2,
-        bgcolor: 'rgba(32, 5, 63, 0.09)',
-        backdropFilter: 'blur(14px)',
-        boxShadow: '0 0 20px rgba(13, 3, 22, 0.1)',
-        borderBottom: `1px dotted ${theme.palette.primary.main}`,
+        p: 1,
+        background: `
+        linear-gradient(
+        180deg,
+        #0f172a 0%,
+        #020617 100%)`,
+        boxShadow: `
+        inset 0 0 0 1px rgba(255,255,255,0.05),
+        0 20px 40px rgba(0,0,0,0.6)`,
         display: 'flex',
         flexDirection: 'column',
-        gap: 3,
+        gap: 2,
         overflow: 'hidden',
+        width: '100%',
         borderRadius: 2,
         transition: 'bgcolor 0.3s ease',
         ":hover": {
@@ -55,35 +60,36 @@ function ProjectCards({ item }) {
         },
       }}
     >
-      <Stack
-        component={'img'}
+      <Box
+        component="img"
         src={item.image}
         alt={item.title}
-        width={'100%'}
-        height={{ xs: 200, sm: 300, md: 370 }}
         sx={{
+          width: '100%',
+          height: 250,
           objectFit: 'cover',
+          borderRadius: 1,
           filter: 'saturate(110%) contrast(110%)',
           boxShadow: `0 0 1px ${theme.palette.primary.main}`,
-          borderRadius: 1,
           transition: 'transform 0.3s ease',
-          ":hover": {
+          display: 'block',
+          '&:hover': {
             transform: 'scale(1.03)',
           },
         }}
-        onError={(e) => (e.target.src = '/fallback.jpg')}
+        onError={(e) => (e.currentTarget.src = '/fallback.jpg')}
       />
 
       <Stack maxWidth={600} mx="auto">
         <Typography variant="h5" textAlign="center" gutterBottom>
           {item.title}
         </Typography>
-        <Typography variant="body2" textAlign="center" gutterBottom>
+        <Typography variant="subtitle2" textAlign="center" gutterBottom>
           {item.description}
         </Typography>
 
         <Stack mt={2} direction="row" flexWrap="wrap" gap={1} justifyContent="center">
-          <Button
+          <CustomButton
             variant="outlined"
             target="_blank"
             rel="noopener"
@@ -91,40 +97,20 @@ function ProjectCards({ item }) {
             to={item.link}
             disabled={item.link === '#'}
             startIcon={<VisibilityIcon />}
-            sx={{
-              bgcolor: 'transparent',
-              color: 'text.primary',
-              borderColor: 'primary.main',
-              '&:hover': {
-                bgcolor: 'primary.light',
-                color: 'primary.contrastText',
-                borderColor: 'primary.main',
-              },
-            }}
           >
             Visit Site
-          </Button>
+          </CustomButton>
 
-          <Button
+          <CustomButton
             variant="outlined"
             target="_blank"
             rel="noopener"
             component={Link}
             to={item.sourceCode}
             startIcon={<GitHubIcon />}
-            sx={{
-              bgcolor: 'transparent',
-              color: 'text.primary',
-              borderColor: 'primary.main',
-              '&:hover': {
-                bgcolor: 'primary.light',
-                color: 'primary.contrastText',
-                borderColor: 'primary.main',
-              },
-            }}
           >
             Source Code
-          </Button>
+          </CustomButton>
         </Stack>
       </Stack>
     </Box>

@@ -1,63 +1,54 @@
 export const palette = {
     mode: 'dark',
 
-    // Primary – Aqua Blue family
     primary: {
-        main: '#00B4D8',       // Bright aqua blue
-        light: '#48CAE4',      // Lighter aqua
-        dark: '#0077B6',       // Deep sea blue
-        contrastText: '#fffce1',
-    },
-
-    // Secondary – Coral Pink family
-    secondary: {
-        main: '#EF476F',       // Vibrant pink coral
-        light: '#FF7A94',      // Light coral
-        dark: '#C9003C',       // Deep magenta
-        contrastText: '#fffce1',
-    },
-
-    // Info – Blue variants
-    info: {
-        main: '#3ABFF8',       // Sky blue
-        dark: '#0284C7',
-        contrastText: '#fffce1',
-    },
-
-    // Warning – Golden yellow (retained)
-    warning: {
-        main: '#FFD166',       // Soft yellow
-        dark: '#C29E00',
+        main: '#00E5FF',
+        light: '#66FCFF',
+        dark: '#0091A8',
         contrastText: '#000000',
     },
 
-    // Error – Rose red
+    secondary: {
+        main: '#7C7CFF',
+        light: '#A5A5FF',
+        dark: '#4B4BDB',
+        contrastText: '#000000',
+    },
+
+    info: {
+        main: '#4FC3F7',
+        dark: '#0288D1',
+        contrastText: '#000000',
+    },
+
+    warning: {
+        main: '#FFC857',
+        dark: '#B28704',
+        contrastText: '#000000',
+    },
+
     error: {
-        main: '#F43F5E',       // Rose red
-        dark: '#B91C1C',
-        contrastText: '#fffce1',
+        main: '#FF5C8A',
+        dark: '#C9184A',
+        contrastText: '#FFFFFF',
     },
 
-    // Success – Replaced jade green with a bluish-teal for harmony
     success: {
-        main: '#4DD0E1',       // Cool cyan (harmonizes with primary)
-        dark: '#00838F',
-        contrastText: '#fffce1',
+        main: '#3AE374',
+        dark: '#1B8A4C',
+        contrastText: '#000000',
     },
 
-    // Text
     text: {
-        primary: '#FFFFFF',
-        secondary: '#B0B0B0',  // Light muted gray for secondary text
-        disabled: '#7A7A7A',
+        primary: '#F5F7FA',
+        secondary: '#A1A7B3',
+        disabled: '#6B7280',
     },
 
-    // Background
     background: {
-        default: '#0A0F1F',  // Muted deep navy-blue
-        paper: '#151B2F',    // Raised cards look premium
+        default: '#020617',
+        paper: '#0E1320',
     },
 
-    // Divider
-    divider: 'rgba(255, 255, 255, 0.08)', // Clean, soft divider line
+    divider: 'rgba(255, 255, 255, 0.05)',
 };

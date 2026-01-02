@@ -39,14 +39,14 @@ function Slider() {
         gsap.to(row1Ref.current, {
             x: '-50%',
             repeat: -1,
-            duration: 30,
+            duration: 40,
             ease: 'linear'
         });
 
         gsap.to(row2Ref.current, {
             x: '-50%',
             repeat: -1,
-            duration: 25,
+            duration: 35,
             ease: 'linear'
         });
     }, []);

@@ -14,7 +14,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SendIcon from '@mui/icons-material/Send';
-
+import CustomButton from '../button/CustomButton';
+import { Divider, IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Email, LocalPhone } from '@mui/icons-material';
 gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {
@@ -102,7 +105,22 @@ function Contact() {
 
   return (
     <Box id="contact">
-      <Container maxWidth="sm">
+      <Container
+        maxWidth="sm"
+        sx={{
+          border: `1px solid ${theme.palette.divider}`,
+          p: 4,
+          borderRadius: 2,
+          background: `
+            linear-gradient(
+            180deg,
+            #0f172a 0%,
+            #020617 100%)`,
+          boxShadow: `
+            inset 0 0 0 1px rgba(255,255,255,0.05),
+            0 20px 40px rgba(0,0,0,0.6)`,
+        }}
+      >
         <Typography
           ref={headingRef}
           variant="h4"
@@ -120,9 +138,16 @@ function Contact() {
           Fill out the form and I'll get back to you as soon as possible.
         </Typography>
 
-        <Box ref={formRef} component="form" onSubmit={handleSubmit} noValidate autoComplete="off">
+        <Box
+          ref={formRef}
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+        >
           <Stack spacing={3}>
             <TextField
+              size="small"
               label="Full Name"
               name="fullName"
               variant="outlined"
@@ -133,6 +158,7 @@ function Contact() {
               placeholder='Behan kumar'
             />
             <TextField
+              size="small"
               label="Email Address"
               name="email"
               type="email"
@@ -144,6 +170,7 @@ function Contact() {
               placeholder='behan@example.com'
             />
             <TextField
+              size="small"
               label="Phone Number"
               name="phone"
               type="tel"
@@ -154,6 +181,7 @@ function Contact() {
               placeholder="+91 9869XXXXXX"
             />
             <TextField
+              size="small"
               label="Subject"
               name="subject"
               variant="outlined"
@@ -169,26 +197,57 @@ function Contact() {
               variant="outlined"
               fullWidth
               multiline
-              rows={5}
+              rows={3}
               required
               value={form.message}
               onChange={handleChange}
               placeholder="I'd like to discuss a potential full-time opportunity at our company..."
             />
-            <Button
+            <CustomButton
               type="submit"
               variant="outlined"
               size="large"
               endIcon={<SendIcon />}
-              sx={{
-                fontWeight: 'bold',
-                color: 'text.primary',
-                bgcolor: 'transparent'
-              }}
+              sx={{ alignSelf: 'flex-end' }}
             >
               Send Proposal
-            </Button>
+            </CustomButton>
           </Stack>
+
+          <Divider
+            sx={{ my: 4, color: 'text.secondary' }}
+          >
+            <Typography>
+              Best why to reach me is via
+            </Typography>
+          </Divider>
+          <Stack direction={'row'} justifyContent={'center'} gap={2}>
+            {[
+              { icon: <LocalPhone />, contact: '+91 8969015583' },
+              { icon: <Email />, contact: 'behankrbth@outlook.com' },
+            ].map((item, i) => (
+              <Link
+                to={item.icon.type === LocalPhone
+                  ? `tel:${item.contact}`
+                  : `mailto:${item.contact}`}
+                key={i}>
+                <IconButton
+                  sx={{
+                    color: 'primary.main',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 0 12px rgba(0,229,255,0.35)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      boxShadow: '0 0 20px rgba(0,229,255,0.65)',
+                    },
+                  }}
+                >
+                  {item.icon}
+                </IconButton>
+              </Link>
+            ))}
+          </Stack>
+
         </Box>
         <ToastContainer position="top-right" autoClose={3000} pauseOnHover />
       </Container>
