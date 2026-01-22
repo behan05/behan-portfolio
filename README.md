@@ -4,7 +4,7 @@ A modern, full-stack developer portfolio website that highlights my skills, proj
 
 ## 🌐 Live Preview
 
-🔗 [Visit Live Portfolio](https://behan-portfolio.vercel.app/) <!-- comming soon -->
+🔗 [Visit Live Portfolio](https://behan.vercel.app/)
 
 ---
 
@@ -94,11 +94,14 @@ npm run dev
 
 ```bash
 PORT=5000
-DB_URL=gwsa&^~$#!(*%~)isdkkjb
+DB_URL=your_mongodb_connection_string
 ```
+    
+    ⚠️ Never commit real credentials. Use environment variables. (.env is ignored in .gitignore)
+    ```
 
-📝 License
-This project is licensed under the MIT License
+## 📝 License
 
-MIT License © 2025 Behan Kumar  
-Email: behankrbth@outlook.com
+This project is licensed under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for details.
+---
