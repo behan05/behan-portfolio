@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Box, Typography, Button, Stack, Link, useTheme } from '@mui/material';
+import { useRef, useEffect, useState } from 'react';
+import { Box, Typography, Stack, Link, useTheme } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import gsap from 'gsap';
@@ -28,7 +28,7 @@ const items = [
         title: 'Pairly Chat',
         description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB.`,
         link: `https://pairly.chat`,
-        sourceCode: ``,
+        sourceCode: `https://github.com/behan05/pairly.git`,
         image: '/projectImages/chat600px.png'
     },
     {
@@ -56,7 +56,7 @@ const Carousel3D = () => {
     const isSm = useTheme().breakpoints.down('sm');
     const isMd = useTheme().breakpoints.down('md');
     const isLg = useTheme().breakpoints.down('lg');
-    
+
     const rotateCarousel = (direction) => {
         const newIndex = (currentIndex + direction + items.length) % items.length;
         setCurrentIndex(newIndex);
@@ -207,7 +207,6 @@ const Carousel3D = () => {
                         Next
                     </CustomButton>
                 </Box>
-
 
                 <Box sx={{ mt: 6, maxWidth: 700, mx: 'auto' }}>
                     <Typography variant="h5" sx={{ color: '#e0e0e0', mb: 1 }}>

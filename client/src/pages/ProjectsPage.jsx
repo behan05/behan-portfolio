@@ -25,7 +25,7 @@ const cardItems = [
     title: 'Pairly Chat',
     description: `A real-time full-stack chat application focused on privacy and security. Supports secure private messaging with future plans for couple-only video chat. Built using React, Node.js, Express, Socket.IO, and MongoDB.`,
     link: `https://pairly.chat`,
-    sourceCode: `https://github.com/behan05/pairly`,
+    sourceCode: `https://github.com/behan05/pairly.git`,
     image: '/projectImages/chatBigImg.png'
   },
   {
@@ -162,7 +162,7 @@ function ProjectsPage() {
         component="section"
         sx={{
           display: 'grid',
-          gridTemplateColumns: isSm  ? '1fr' : (isMd || isLg) ? 'repeat(2, 0.8fr)' : 'repeat(3, 1fr)',
+          gridTemplateColumns: isSm ? '1fr' : (isMd || isLg) ? 'repeat(2, 0.8fr)' : 'repeat(3, 1fr)',
           gap: 2,
         }}
       >
@@ -171,15 +171,20 @@ function ProjectsPage() {
         ))}
       </Box>
 
-      {/* === Decorative Rotating Rectangle Graphic === */}
-      <Stack mb={-10} justifyContent="center">
-        <RactangleFlower />
-      </Stack>
+      {!isMd && (
+        <>
+          {/* === Decorative Rotating Rectangle Graphic === */}
+          <Stack mb={-10} justifyContent="center">
+            <RactangleFlower />
+          </Stack>
 
-      {/* ===  Carousel3D  === */}
-      <Stack ref={carouselRef}>
-        <Carousel3D />
-      </Stack>
+          {/* ===  Carousel3D  === */}
+          <Stack ref={carouselRef}>
+            <Carousel3D />
+          </Stack>
+        </>
+      )}
+
     </Box>
   );
 }
