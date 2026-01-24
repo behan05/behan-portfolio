@@ -56,7 +56,7 @@ const cardItems = [
     id: 5,
     title: 'NewsNest (News App)',
     description: `A Next.js news application created to explore the App Router, URL-based state management, and live API integration with a clean reading experience.`,
-    link: `#`,
+    link: `https://newsnestnow.vercel.app/`,
     sourceCode: `https://github.com/behan05/news-app`,
     image: '/projectImages/newsappBigImg.png'
   },
