@@ -93,7 +93,7 @@ function AboutPage() {
           sx={{ maxWidth: { xs: '100%', md: 720 }, mx: 'auto', lineHeight: 1.8 }}
         >
           Full-Stack Developer focused on modern React, clean backend architecture,
-          and real-time systems — building products that balance performance,
+          and real-time systems - building products that balance performance,
           privacy, and user experience.
         </Typography>
 
@@ -285,18 +285,21 @@ function AboutPage() {
           }}
         >
           <Typography color="text.secondary">
-            My journey began with frontend development and expanded into full-stack
-            engineering as I designed APIs, real-time systems, and deployment pipelines.
+            I didn't start with a roadmap — I started with curiosity. My first steps were
+            in frontend development, building small UIs and figuring out how things worked
+            by breaking them and fixing them again.
           </Typography>
 
           <Typography color="text.secondary">
-            I work extensively with the MERN stack, Socket.IO, Redux Toolkit, GSAP,
-            and modern tooling like Git, Vite, Postman, and cloud deployments.
+            Over time that curiosity grew into something bigger. I started building backends,
+            designing APIs, connecting databases, and eventually shipping full products
+            independently — from the first line of code to production deployment.
           </Typography>
 
           <Typography color="text.secondary">
-            Currently, I’m enhancing <strong>Pairly.chat</strong> with advanced,
-            privacy-first real-time communication features.
+            Today I'm still building. <strong>Pairly.chat</strong> is my most ambitious
+            project — a real-time chat platform I've put 395+ commits into, with real users
+            and new features actively in development.
           </Typography>
         </Stack>
       </Box>

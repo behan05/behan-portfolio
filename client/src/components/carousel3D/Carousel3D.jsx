@@ -9,40 +9,40 @@ import CustomButton from '../button/CustomButton';
 const items = [
     {
         id: 1,
-        title: 'Brandora Digital Solutions',
-        description: `A responsive and modern digital agency website built using React and Material UI, showcasing services, portfolio, and a call-to-action for clients and businesses.`,
+        title: 'Brandora - Digital Agency Platform',
+        description: `Full-stack digital agency web application built with React, Node.js, Express, and MongoDB. Features GSAP animations, fully responsive design, and backend APIs for newsletter and contact forms. Deployed on Vercel and Render.`,
         link: `https://brandora-agency.vercel.app`,
         sourceCode: `https://github.com/behan05/brandora-digital-solutions`,
         image: '/projectImages/brandora660px.png'
     },
     {
         id: 2,
-        title: 'Admin Dashboard',
-        description: `A modern and responsive Admin Dashboard built with React and Material UI (MUI v5). Features a customizable AppBar, Sidebar, and reusable components.`,
+        title: 'React Admin Dashboard',
+        description: `Modern and responsive admin dashboard built with React and Material UI v5. Features customizable layout, sidebar navigation, reusable UI components, and clean data visualization - ready for real-world integration.`,
         link: `https://react-admin-panel-behan.vercel.app/`,
         sourceCode: `https://github.com/behan05/material-ui-admin-dashboard`,
         image: '/projectImages/admin660px.png'
     },
     {
         id: 3,
-        title: 'Pairly Chat',
-        description: `A full-stack real-time chat application currently supporting secure text-based private messaging. In the next version, it will include video chat in Couple Mode only to ensure user privacy and safety. Built with React, Node.js, Express, Socket.IO, and MongoDB.`,
+        title: 'Pairly - Real-Time Chat Platform',
+        description: `Full-stack real-time chat platform built independently from architecture to production. Features Socket.IO messaging, JWT authentication, MongoDB data models, and a comprehensive admin dashboard. Live for real users across multiple countries. 395+ commits.`,
         link: `https://pairly.chat`,
-        sourceCode: `https://github.com/behan05/pairly.git`,
+        sourceCode: `https://github.com/behan05/pairly`,
         image: '/projectImages/chat600px.png'
     },
     {
         id: 4,
-        title: 'Production Grade Dashboard',
-        description: `An enterprise-ready dashboard template built with React and Material UI, featuring scalable architecture, responsive design, and data-driven UI components.`,
-        link: `#`,
-        sourceCode: `#`,
+        title: 'Chat App Admin Dashboard',
+        description: `Production-ready admin dashboard template for chat applications. Features real-time analytics, user management, content moderation, security controls, and billing management. Built with React and Material UI - clean dark UI, fully responsive and API-ready.`,
+        link: `https://chat-platform-admin.vercel.app/`,
+        sourceCode: `https://github.com/behan05/chat-platform-admin`,
         image: '/projectImages/productionDashboard600px.png'
     },
     {
         id: 5,
-        title: 'NewsNest (News App)',
-        description: `A Next.js news application created to explore the App Router, URL-based state management, and live API integration with a clean reading experience.`,
+        title: 'NewsNest - Next.js News App',
+        description: `News application built with Next.js App Router featuring URL-based state management, live API integration, and a clean reading experience. Built to explore modern Next.js patterns in a real-world context.`,
         link: `https://newsnestnow.vercel.app/`,
         sourceCode: `https://github.com/behan05/news-app`,
         image: '/projectImages/newsapp600px.png'
