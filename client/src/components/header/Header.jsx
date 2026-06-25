@@ -37,6 +37,8 @@ gsap.registerPlugin(useGSAP);
 function Header() {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("md"));
+  const isLg = useMediaQuery(theme.breakpoints.down("lg"));
+
   const { toggleSidebar } = useSidebar();
   const pages = [
     { text: "Home", href: "/", icon: <HomeIcon /> },
@@ -109,10 +111,10 @@ function Header() {
         backgroundColor: 'transparent',
         backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: `1px solid ${theme.palette.divider}`,
         position: 'sticky',
         top: 0,
         zIndex: 10,
+        px: isSm ? 0 : isLg ? 10 : 30,
       }}
     >
       <Toolbar

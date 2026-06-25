@@ -14,6 +14,11 @@ function LandingPage() {
   return (
     <Box sx={{ px: { xs: 2, md: 4 }, overflow: 'hidden' }}>
 
+      {/* Backdrop line styling */}
+      <Box 
+        
+      />
+
       {/* === Hero Section with Animated Text and Technology Icons === */}
       <HeroSection />
 
